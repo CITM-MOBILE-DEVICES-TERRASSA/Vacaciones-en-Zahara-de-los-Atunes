@@ -29,4 +29,12 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName: "Lobby");
     }
+    public void LoadMeta()
+    {
+        SceneManager.LoadScene(sceneName: "MetaScreen");
+    }
+    public void LoadGameplay()
+    {
+        SceneManager.LoadScene(sceneName: "Gameplay");
+    }
 }
