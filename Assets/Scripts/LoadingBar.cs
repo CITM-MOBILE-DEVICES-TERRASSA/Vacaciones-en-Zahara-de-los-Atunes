@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEditor.SearchService;
 
 public class LoadingBar : MonoBehaviour
 {
@@ -22,5 +23,6 @@ public class LoadingBar : MonoBehaviour
 
             yield return null;
         }
+        SceneLoader.Instance.LoadMainLobby();
     }
 }
