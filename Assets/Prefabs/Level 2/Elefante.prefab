@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2347934457202742901}
   - component: {fileID: 3590957017451206339}
   - component: {fileID: 4086668890104443241}
+  - component: {fileID: 4213061358211641260}
   m_Layer: 5
   m_Name: Elefante
   m_TagString: Untagged
@@ -109,3 +110,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4213061358211641260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393214383539997486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd339f8da16e496783abb7148f6e12c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 0

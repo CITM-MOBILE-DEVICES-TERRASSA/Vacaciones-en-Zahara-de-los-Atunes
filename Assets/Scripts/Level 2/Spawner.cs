@@ -17,8 +17,8 @@ public class Spawner : MonoBehaviour
     private float elapsedTime = 0f;
 
     // Intervalo de spawn (medio segundo para elefantes, 1 segundo para monarcas)
-    private float elefanteSpawnInterval = 0.5f;
-    private float monarcaSpawnInterval = 1.0f;
+    private float elefanteSpawnInterval = 2.0f;
+    private float monarcaSpawnInterval = 4.0f;
 
     // Conteo de spawn específicos
     private int pedroSanchezSpawnCount = 0;
@@ -92,5 +92,8 @@ public class Spawner : MonoBehaviour
 
         // Asegurarse de que el objeto esté por encima de otros elementos del Canvas
         rectTransform.SetAsLastSibling();  // Esto coloca el objeto en el "top layer" del Canvas
+
+        // si pasa x tiempo el objeto desaparece
+        Destroy(spawnedObject, 5f);
     }
 }
