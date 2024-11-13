@@ -15,6 +15,7 @@ public class ClickableObject : MonoBehaviour
 
     // Referencia al controlador de puntaje
     private ScoreManagerLevel2 scoreManager;
+    private SettingsButton settings;
 
     void Start()
     {
@@ -25,35 +26,47 @@ public class ClickableObject : MonoBehaviour
         {
             Debug.LogError("No se encontró el ScoreManager en la escena.");
         }
+
+        settings = FindObjectOfType<SettingsButton>();
+
+        if (settings == null)
+        {
+            Debug.LogError("No se encontró el SettingsButton en la escena.");
+        }
     }
+
 
     void OnMouseDown()
     {
         // Determina los puntos basados en el tipo de objeto
         int points = 0;
-        switch (objectType)
-        {
-            case ObjectType.Elefante:
-                points = elefantePoints;
-                break;
-            case ObjectType.Monarca:
-                points = monarcaPoints;
-                break;
-            case ObjectType.PedroSanchez:
-                points = pedroSanchezPoints;
-                break;
-            case ObjectType.ReinaSofia:
-                points = reinaSofiaPoints;
-                break;
+
+        if (settings.isPaused != true) {
+            switch (objectType)
+            {
+                case ObjectType.Elefante:
+                    points = elefantePoints;
+                    break;
+                case ObjectType.Monarca:
+                    points = monarcaPoints;
+                    break;
+                case ObjectType.PedroSanchez:
+                    points = pedroSanchezPoints;
+                    break;
+                case ObjectType.ReinaSofia:
+                    points = reinaSofiaPoints;
+                    break;
+            }
+
+            // Actualiza el puntaje
+            if (scoreManager != null)
+            {
+                scoreManager.UpdateScore(points);
+            }
+
+            // Destruye el objeto al hacer clic
+            Destroy(gameObject);
         }
 
-        // Actualiza el puntaje
-        if (scoreManager != null)
-        {
-            scoreManager.UpdateScore(points);
-        }
-
-        // Destruye el objeto al hacer clic
-        Destroy(gameObject);
     }
 }

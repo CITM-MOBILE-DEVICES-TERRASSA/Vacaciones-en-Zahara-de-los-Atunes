@@ -81,7 +81,7 @@ public class Spawner : MonoBehaviour
 
         // Asegurarse de que la posición esté dentro de los límites del Canvas
         float x = Random.Range(-canvasRect.rect.width / 2, canvasRect.rect.width / 2);
-        float y = Random.Range(-canvasRect.rect.height / 2, canvasRect.rect.height / 2);
+        float y = Random.Range(-canvasRect.rect.height / 2, canvasRect.rect.height / 2 - 375);
 
         // Instancia el objeto en la posición calculada
         GameObject spawnedObject = Instantiate(prefab, spawnCanvas.transform);
