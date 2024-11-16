@@ -4,22 +4,40 @@ using UnityEngine;
 
 public class PositionMark : MonoBehaviour
 {
-    void Start()
+    public GameObject prefab; 
+    private void Start()
     {
-        float normalizedX = GetRandomXNormalized();
-        Debug.Log("Punto aleatorio en el eje X (normalizado): " + normalizedX);
+        CreatePoint();
     }
+    
 
-    float GetRandomXNormalized()
-    {
-        Renderer renderer = GetComponent<Renderer>();
+    
+        public void CreatePoint()
+        {
+            if (prefab == null)
+            {
+                Debug.LogError("No se ha asignado un prefab en el inspector.");
+                return;
+            }
 
-        Bounds bounds = renderer.bounds;
+            Renderer renderer = GetComponent<Renderer>();
+            if (renderer == null)
+            {
+                Debug.LogError("El objeto no tiene un componente Renderer para calcular los límites.");
+                return;
+            }
 
-        float randomX = Random.Range(bounds.min.x, bounds.max.x);
+            float minX = renderer.bounds.min.x;
+            float maxX = renderer.bounds.max.x;
 
-        float normalizedX = Mathf.InverseLerp(bounds.min.x, bounds.max.x, randomX);
+            float randomX = Random.Range(minX, maxX);
+            float randomy = 0.5f;
 
-        return normalizedX;
-    }
+            Vector3 spawnPosition = new Vector3(randomX, transform.position.y + randomy, transform.position.z);
+            
+            Instantiate(prefab, spawnPosition, Quaternion.identity);
+        }
+
+    
+
 }
