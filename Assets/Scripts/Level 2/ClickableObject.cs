@@ -61,7 +61,7 @@ public class ClickableObject : MonoBehaviour
             // Actualiza el puntaje
             if (scoreManager != null)
             {
-                scoreManager.UpdateScore(points);
+                scoreManager.UpdateScoreLevel2(points);
             }
 
             // Destruye el objeto al hacer clic
