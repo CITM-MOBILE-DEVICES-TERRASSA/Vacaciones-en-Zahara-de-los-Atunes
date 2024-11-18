@@ -23,7 +23,7 @@ public class PositionMark : MonoBehaviour
             Renderer renderer = GetComponent<Renderer>();
             if (renderer == null)
             {
-                Debug.LogError("El objeto no tiene un componente Renderer para calcular los límites.");
+                Debug.LogError("El objeto no tiene un componente Renderer para calcular los lï¿½mites.");
                 return;
             }
 
@@ -34,8 +34,9 @@ public class PositionMark : MonoBehaviour
             float randomy = 0.5f;
 
             Vector3 spawnPosition = new Vector3(randomX, transform.position.y + randomy, transform.position.z);
-            
-            Instantiate(prefab, spawnPosition, Quaternion.identity);
+
+            var instance = Instantiate(prefab, spawnPosition, Quaternion.identity);
+                instance.transform.parent = gameObject.transform;
         }
 
     
