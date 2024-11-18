@@ -2999,7 +2999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d68c8e3e41237409be88b35d7d46c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lobbyScore: {fileID: 1690877377}
+  lobbyScore1: {fileID: 0}
+  lobbyScore2: {fileID: 0}
 --- !u!1 &1489983847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3931,9 +3932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Vacaciones en Zahara de los Atunes
-
-'
+  m_text: Minigames Lobby
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3960,7 +3959,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.7
+  m_fontSize: 61.85
   m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 1

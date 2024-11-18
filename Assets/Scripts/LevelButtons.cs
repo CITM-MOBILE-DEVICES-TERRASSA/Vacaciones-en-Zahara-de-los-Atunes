@@ -10,6 +10,10 @@ public class LevelButtons : MonoBehaviour
     {
         SceneLoader.Instance.LoadGameplay();
     }
+    public void PlayLevel2()
+    {
+        SceneLoader.Instance.LoadScene("Level 2");
+    }
 
     public void ReturnToLobby()
     {
