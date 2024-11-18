@@ -28,8 +28,11 @@ public class ScoreManager : MonoBehaviour
     private int score;
     private int totalScore;
 
-    private int Maxscore1;
+    private int MaxScore1;
     private int MaxScore2;
+    private int MaxTotal;
+    public TextMeshProUGUI textScore1;
+    public TextMeshProUGUI textScore2;
     private UpdateLobbyScore lobbyscore;
     void Start()
     {
@@ -39,26 +42,36 @@ public class ScoreManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            
-        }
+        ShowScoreText1();
+        ShowScoreText2();
     }
 
     public void UpdateMaxScore1(int points)
     {
-        Maxscore1 = points;
-        lobbyscore.UpdateScoreText1(Maxscore1);
-        ////En el caso de que se aumenten diferentes valores de score, se añadiría un parámetro y se usaría la siguiente línea:
-        ////score += newScore
-        //score += 50;
-        //PlayerPrefs.SetInt("GameScore", score);
-        //PlayerPrefs.SetInt("TotalScore", score);
+        MaxScore1 = points;
+        UpdateTotalScore(MaxScore1);
+    }
+    private void ShowScoreText1()
+    {
+        int score = PlayerPrefs.GetInt("Level1Score", MaxScore1); 
+        textScore1.text = score.ToString();
     }
     public void UpdateMaxScore2(int points)
     {
         MaxScore2 = points;
-        lobbyscore.UpdateScoreText2(MaxScore2);
+        UpdateTotalScore(MaxScore2);
+    }
+    private void ShowScoreText2()
+    {
+        int score = PlayerPrefs.GetInt("Level2Score", MaxScore2); 
+        textScore2.text = score.ToString();
+    }
+    public void UpdateTotalScore(int points){
+        int suma = 0;
+        suma = points - MaxTotal;
+        MaxTotal = MaxTotal + suma;
+        lobbyscore.UpdateTotalScoreText	(MaxTotal);
+
     }
 
 }

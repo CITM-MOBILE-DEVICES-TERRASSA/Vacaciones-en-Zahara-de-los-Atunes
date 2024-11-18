@@ -7,9 +7,9 @@ using System;
 public class UpdateLobbyScore : MonoBehaviour
 {
     public TextMeshProUGUI lobbyScore1;
-    public TextMeshProUGUI lobbyScore2;
-    private int score1 = 0;
-    private int score2 = 0;
+    //public TextMeshProUGUI lobbyScore2;
+    private int totalscore = 0;
+    
     private ScoreManager scoreManager;
 
     void Start()
@@ -19,25 +19,14 @@ public class UpdateLobbyScore : MonoBehaviour
     private void Update()
     {
         ShowScoreText1();
-        ShowScoreText2();
     }
-
-    public void UpdateScoreText1(int points)
+    public void UpdateTotalScoreText(int points)
     {
-        score1 = points;
+        totalscore += points;
     }
-    public void UpdateScoreText2(int points)
+     private void ShowScoreText1()
     {
-        score2 = points;
-    }
-    private void ShowScoreText1()
-    {
-        int score = PlayerPrefs.GetInt("Level1Score", score1); 
-        lobbyScore1.text = score.ToString();
-    }
-    private void ShowScoreText2()
-    {
-        int score = PlayerPrefs.GetInt("PlayerScore", score2); 
+        int score = PlayerPrefs.GetInt("Level1Score", totalscore); 
         lobbyScore1.text = score.ToString();
     }
 }

@@ -765,7 +765,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b89a75b0ec0c940960e3cd8e644a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fish: {fileID: 0}
+  fish: {fileID: 1399683048}
+  marker: {fileID: 5407756635775994152, guid: 6b9a91173baf3884dbb552c59867c1aa, type: 3}
+  cutScore: 0
+  distanceX: 0
 --- !u!23 &361556155
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2293,6 +2296,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226026166}
   m_CullTransparentMesh: 1
+--- !u!1 &1399683048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1502791765520682186, guid: 9e1400686dab471448be794f6538a0e5, type: 3}
+  m_PrefabInstance: {fileID: 5428035629553360115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1507546289
 GameObject:
   m_ObjectHideFlags: 0

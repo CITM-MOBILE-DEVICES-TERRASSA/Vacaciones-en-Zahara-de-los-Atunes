@@ -14,13 +14,13 @@ public class ClickableObject : MonoBehaviour
     private int reinaSofiaPoints = -1000;
 
     // Referencia al controlador de puntaje
-    private ScoreManagerLevel2 scoreManager;
+    private ScoreManagerLevel scoreManager;
     private SettingsButton settings;
 
     void Start()
     {
         // Busca el ScoreManager en la escena para actualizar el puntaje
-        scoreManager = FindObjectOfType<ScoreManagerLevel2>();
+        scoreManager = FindObjectOfType<ScoreManagerLevel>();
 
         if (scoreManager == null)
         {

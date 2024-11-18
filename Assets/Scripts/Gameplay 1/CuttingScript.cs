@@ -7,11 +7,16 @@ using UnityEngine;
 public class CuttingScript : MonoBehaviour
 {
     public GameObject fish;
+    public Transform marker; 
+    public int cutScore;
+    private ScoreManagerLevel scoremanagerlevel;
+    public float distanceX;
     
     // Start is called before the first frame update
     void Start()
     {
-           
+           cutScore = 0;
+           scoremanagerlevel = FindObjectOfType<ScoreManagerLevel>();
     }
 
     // Update is called once per frame
@@ -21,21 +26,35 @@ public class CuttingScript : MonoBehaviour
     }
 
     public void PerformCut()
+{
+    if (fish != null)
     {
-        if (fish != null)
+        // Realizamos la operación de corte
+        var m = CSG.Subtract(fish, gameObject);
+
+        fish.GetComponent<MeshFilter>().sharedMesh = m.mesh;
+        fish.GetComponent<MeshRenderer>().sharedMaterials = m.materials.ToArray();
+
+        Destroy(fish.GetComponent<Collider>());
+        fish.AddComponent<MeshCollider>().convex = true;
+
+        if (marker != null)
         {
-            var m = CSG.Subtract(fish, gameObject);
-            
-            fish.GetComponent<MeshFilter>().sharedMesh = m.mesh;
-            fish.GetComponent<MeshRenderer>().sharedMaterials = m.materials.ToArray();
+           // Calculamos la distancia absoluta en el eje X
+           distanceX = Mathf.Abs(transform.position.x - marker.position.x);
+    
+            // Calculamos la puntuación proporcional a la distancia absoluta
+           cutScore = Mathf.RoundToInt(distanceX * 200);
+           scoremanagerlevel.UpdateScoreLevel1(cutScore);
+       }
+       else
+       {
+       }
 
-            Destroy(fish.GetComponent<Collider>());
-            fish.AddComponent<MeshCollider>().convex = true;
-
-            fish.transform.position = Vector3.zero;
-
-        }
+        fish.transform.position = Vector3.zero;
     }
+}
+
 
     void OnTriggerEnter(Collider other)
     {

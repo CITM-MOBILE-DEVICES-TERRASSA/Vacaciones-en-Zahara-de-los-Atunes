@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ScoreManagerLevel2 : MonoBehaviour
+public class ScoreManagerLevel : MonoBehaviour
 {
-    public int score1 = 0;
-    public int maxscore1 = 0;
-    public int score2 = 0; // Puntaje inicial
-    public int maxscore2 = 0;
+    private int score1 = 0;
+    private int maxscore1 = 0;
+    private int score2 = 0; // Puntaje inicial
+    private int maxscore2 = 0;
     public TextMeshProUGUI scoreText; // Referencia al texto de puntaje en el Canvas
+    private ScoreManager scoremanager;
 
     void Start()
     {
-        
+         scoremanager = FindObjectOfType<ScoreManager>();
     }
     public void UpdateScoreLevel1(int points)
     {
@@ -29,6 +30,7 @@ public class ScoreManagerLevel2 : MonoBehaviour
             if(score1 > maxscore1)
             {
                 maxscore1 = score1;
+                scoremanager.UpdateMaxScore1(maxscore1);
             }
         }
         else
@@ -50,7 +52,13 @@ public void UpdateScoreLevel2(int points)
         if (scoreText != null)
         {
             scoreText.text = "Puntos: " + score2;
+            if(score2 > maxscore2)
+            {
+                maxscore2 = score2;
+                scoremanager.UpdateMaxScore2(maxscore2);
+            }
         }
+        
         else
         {
             Debug.LogError("Score Text no está asignado en el ScoreManager.");
