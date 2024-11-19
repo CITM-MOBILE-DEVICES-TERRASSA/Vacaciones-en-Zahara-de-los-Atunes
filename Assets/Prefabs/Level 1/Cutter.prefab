@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fish: {fileID: 0}
+  marker: {fileID: 0}
+  cutScore: 0
+  distanceX: 0
 --- !u!64 &5839613099731193780
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -114,11 +117,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4068373912626513877, guid: 02588f1d79fc37b4594f34ee3d79b528, type: 3}
 --- !u!1 &7019880745343250917
@@ -132,7 +135,6 @@ GameObject:
   - component: {fileID: 8712146757926810301}
   - component: {fileID: 9014363313833763635}
   - component: {fileID: 4315673857741496025}
-  - component: {fileID: 3399525323462255336}
   m_Layer: 0
   m_Name: Cutter visual
   m_TagString: Untagged
@@ -205,28 +207,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3399525323462255336
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7019880745343250917}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4068373912626513877, guid: 02588f1d79fc37b4594f34ee3d79b528, type: 3}
 --- !u!1 &8039556884434704705
 GameObject:
   m_ObjectHideFlags: 0
