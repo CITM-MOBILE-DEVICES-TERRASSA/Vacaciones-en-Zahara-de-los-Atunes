@@ -23,8 +23,8 @@ public class UpdateLobbyScore : MonoBehaviour
     }
     public void UpdateTotalGameScore()
     {
-        
-        scoreManager.MaxTotalGame = scoreManager.MaxTotalLevels; // añadir mas para mas juegos
+        UpdateScoreTotal();
+        scoreManager.MaxTotalGame = scoreManager.MaxTotalLevels; // aï¿½adir mas para mas juegos
     }
      private void ShowScoreText1()
     {
@@ -34,8 +34,13 @@ public class UpdateLobbyScore : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Score Text no está asignado en el ScoreManager.");
+            Debug.LogError("Score Text no estï¿½ asignado en el ScoreManager.");
         }
         
+    }
+    private void UpdateScoreTotal()
+    {
+        scoreManager.MaxTotalLevels = scoreManager.MaxScore1 + scoreManager.MaxScore2;
+        scoreManager.MaxTotalGame = scoreManager.MaxTotalLevels;
     }
 }
