@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,6 +36,10 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadGameplay()
     {
-        SceneManager.LoadScene(sceneName: "Gameplay");
+        SceneManager.LoadScene(sceneName: "Level 1");
+    }
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName: sceneName);
     }
 }
