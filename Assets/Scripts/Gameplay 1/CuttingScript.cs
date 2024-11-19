@@ -11,11 +11,54 @@ public class CuttingScript : MonoBehaviour
     [Min(1)]public int maxScorePerCut = 200;
     // Relacion inversamente proporcional de la distancia
     [Range(0.01f,10.0f)]public float distanceFactor = 2.0f;
-    
+
+    //animacion cuchillo
+    public float cutAnimDuration = 0.3f;
+    public float cutAngle = 45f;
+    private Quaternion initialRotation;
+
     // Start is called before the first frame update
     void Start()
     {
-           scoremanagerlevel = FindObjectOfType<ScoreManagerLevel>();
+        scoremanagerlevel = FindObjectOfType<ScoreManagerLevel>();
+        initialRotation = transform.rotation;
+
+    }
+
+    void Update()
+    {        
+        if (Input.GetMouseButtonDown(0)) //left button
+        {
+            PerformCut();
+        }
+    }
+
+    private IEnumerator CutKnifeAnim()
+    {
+        float elapsedTime = 0f;
+
+        //rotar cuchillo
+        while (elapsedTime < cutAnimDuration)
+        {
+            float t = elapsedTime / cutAnimDuration;
+            float angle = Mathf.Lerp(0f, cutAngle, t);
+            transform.rotation = Quaternion.Euler(-angle, 0f, 0f);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        //devolver cuchillo a pos inicial
+        elapsedTime = 0f;
+        while (elapsedTime < cutAnimDuration)
+        {
+            float t = elapsedTime/cutAnimDuration;
+            float angle = Mathf.Lerp(cutAngle, 0f, t);
+            transform.rotation = Quaternion.Euler(-angle, 0f, 0f);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.rotation = initialRotation;
     }
 
     public void PerformCut()
@@ -23,6 +66,9 @@ public class CuttingScript : MonoBehaviour
         // Convertir a corutina y añadir un delay para sincronizar con la animacion?
         
         if (fish == null) return;
+
+        //corutina para anim de corte
+        StartCoroutine(CutKnifeAnim());
         
         // Realizamos la operacion de corte
         var m = CSG.Subtract(fish, gameObject);
