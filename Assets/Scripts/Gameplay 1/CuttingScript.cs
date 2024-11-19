@@ -33,9 +33,10 @@ public class CuttingScript : MonoBehaviour
         // Recalcula la colision del objeto cortado
         Destroy(fish.GetComponent<Collider>());
         fish.AddComponent<MeshCollider>().convex = true;
-            
+        fish.transform.position = Vector3.zero;
+
         var marker = fish.GetComponent<PositionMark>().instance.transform;
-    
+
         if (marker != null)
         {
             // Calculamos la distancia en el eje X
@@ -45,8 +46,6 @@ public class CuttingScript : MonoBehaviour
             var cutScore = Mathf.RoundToInt(maxScorePerCut/(1+(distanceX*distanceFactor)));
             scoremanagerlevel.UpdateScoreLevel1(cutScore);
         }
-    
-        fish.transform.position = Vector3.zero;
     }
 
 
