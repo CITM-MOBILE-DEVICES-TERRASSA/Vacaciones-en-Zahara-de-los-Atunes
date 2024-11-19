@@ -36,7 +36,7 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadGameplay()
     {
-        SceneManager.LoadScene(sceneName: "Gameplay");
+        SceneManager.LoadScene(sceneName: "Level 1");
     }
     public void LoadScene(string sceneName)
     {
