@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PositionMark : MonoBehaviour
 {
-    public GameObject prefab; 
+    public GameObject prefab;
+    public GameObject instance;
     private void Start()
     {
         CreatePoint();
@@ -35,8 +36,8 @@ public class PositionMark : MonoBehaviour
 
             Vector3 spawnPosition = new Vector3(randomX, transform.position.y + randomy, transform.position.z);
 
-            var instance = Instantiate(prefab, spawnPosition, Quaternion.identity);
-                instance.transform.parent = gameObject.transform;
+            instance = Instantiate(prefab, spawnPosition, Quaternion.identity);
+            instance.transform.parent = gameObject.transform;
         }
 
     
