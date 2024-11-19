@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class RandomMover : MonoBehaviour
 {
-    public float moveSpeed = 100f; // Velocidad de movimiento
-    public RectTransform canvasRect; // Referencia al Canvas
+    public float moveSpeed = 300f;
+    public RectTransform canvasRect;
     private Vector2 targetPosition;
 
     void Start()
@@ -19,7 +19,7 @@ public class RandomMover : MonoBehaviour
             return;
         }
 
-        // Mover hacia la pos objetivo
+        //mover hacia la pos objetivo
         RectTransform rectTransform = GetComponent<RectTransform>();
         rectTransform.anchoredPosition = Vector2.MoveTowards(
             rectTransform.anchoredPosition,
@@ -27,7 +27,7 @@ public class RandomMover : MonoBehaviour
             moveSpeed * Time.deltaTime
         );
 
-        // Si llegamos a la pos objetivo, definimos una nueva
+        //si llega a pos objetivo, definimos una nueva
         if (Vector2.Distance(rectTransform.anchoredPosition, targetPosition) < 1f)
         {
             SetNewTargetPosition();
@@ -35,8 +35,7 @@ public class RandomMover : MonoBehaviour
     }
 
     void SetNewTargetPosition()
-    {
-        // Generar una nueva pos dentro de los limites del Canvas
+    {        
         float x = Random.Range(-canvasRect.rect.width / 2, canvasRect.rect.width / 2);
         float y = Random.Range(-canvasRect.rect.height / 2, canvasRect.rect.height / 2 - 375);
         targetPosition = new Vector2(x, y);

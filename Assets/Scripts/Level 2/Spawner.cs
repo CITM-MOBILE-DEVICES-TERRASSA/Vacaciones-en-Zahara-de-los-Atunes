@@ -2,32 +2,28 @@ using System.Collections;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
-{
-    // Prefabs para cada tipo de objeto
+{    
     public GameObject elefantePrefab;
     public GameObject monarcaPrefab;
     public GameObject pedroSanchezPrefab;
     public GameObject reinaSofiaPrefab;
-
-    // Referencia al Canvas donde se generarán los objetos
+        
     public Canvas spawnCanvas;
 
-    // Duración total del spawn en segundos (2 minutos y medio = 150 segundos)
+    // Duracion total del spawn en segundos (2 minutos y medio = 150 segundos)
     private float totalSpawnDuration = 150f;
     private float elapsedTime = 0f;
 
     // Intervalo de spawn (medio segundo para elefantes, 1 segundo para monarcas)
     private float elefanteSpawnInterval = 2.0f;
     private float monarcaSpawnInterval = 4.0f;
-
-    // Conteo de spawn específicos
+        
     private int pedroSanchezSpawnCount = 0;
     private int maxPedroSanchezCount = 3;
     private bool hasSpawnedReinaSofia = false;
 
     void Start()
-    {
-        // Iniciar los ciclos de spawn
+    {        
         StartCoroutine(SpawnElefantes());
         StartCoroutine(SpawnMonarcas());
         StartCoroutine(SpawnSpecialCharacters());
@@ -54,46 +50,46 @@ public class Spawner : MonoBehaviour
 
     IEnumerator SpawnSpecialCharacters()
     {
+
+        float specialCharacterSpawnInterval = 15.0f;
+
         while (elapsedTime < totalSpawnDuration)
         {
-            // Spawn de Pedro Sánchez (máximo 3)
+            //Pedro Sanchez (max 3)
             if (pedroSanchezSpawnCount < maxPedroSanchezCount)
             {
                 Spawn(pedroSanchezPrefab);
                 pedroSanchezSpawnCount++;
             }
 
-            // Spawn de Reina Sofía (solo 1 vez)
+            //Reina Sofia (solo 1 vez)
             if (!hasSpawnedReinaSofia)
             {
                 Spawn(reinaSofiaPrefab);
                 hasSpawnedReinaSofia = true;
             }
 
-            yield return new WaitForSeconds(totalSpawnDuration); // Espera hasta el final del tiempo de spawn
+            yield return new WaitForSeconds(specialCharacterSpawnInterval);
+            elapsedTime += specialCharacterSpawnInterval;
         }
     }
 
     void Spawn(GameObject prefab)
     {
-        // Generar una posición aleatoria dentro del Canvas
+        //generar pos aleatoria dentro del Canvas
         RectTransform canvasRect = spawnCanvas.GetComponent<RectTransform>();
-
-        // Asegurarse de que la posición esté dentro de los límites del Canvas
+                
         float x = Random.Range(-canvasRect.rect.width / 2, canvasRect.rect.width / 2);
         float y = Random.Range(-canvasRect.rect.height / 2, canvasRect.rect.height / 2 - 375);
-
-        // Instancia el objeto en la posición calculada
+                
         GameObject spawnedObject = Instantiate(prefab, spawnCanvas.transform);
 
-        // Ajusta la posición del objeto en el espacio del Canvas
+        // Ajusta pos del objeto en el espacio del Canvas
         RectTransform rectTransform = spawnedObject.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = new Vector2(x, y);
-
-        // Asegurarse de que el objeto esté por encima de otros elementos del Canvas
-        rectTransform.SetAsLastSibling();  // Esto coloca el objeto en el "top layer" del Canvas
-
-        // si pasa x tiempo el objeto desaparece
+                
+        rectTransform.SetAsLastSibling();  // coloca objeto en el top layer del Canvas
+                
         Destroy(spawnedObject, 5f);
     }
 }
