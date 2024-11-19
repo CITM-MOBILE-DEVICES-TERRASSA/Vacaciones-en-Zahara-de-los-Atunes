@@ -11,8 +11,8 @@ public class Spawner : MonoBehaviour
     public Canvas spawnCanvas;
 
     // Duracion total del spawn en segundos (2 minutos y medio = 150 segundos)
-    private float totalSpawnDuration = 150f;
-    private float elapsedTime = 0f;
+    [SerializeField] private float totalSpawnDuration = 150f;
+
 
     // Intervalo de spawn (medio segundo para elefantes, 1 segundo para monarcas)
     private float elefanteSpawnInterval = 2.0f;
@@ -31,6 +31,7 @@ public class Spawner : MonoBehaviour
 
     IEnumerator SpawnElefantes()
     {
+        float elapsedTime = 0f;
         while (elapsedTime < totalSpawnDuration)
         {
             Spawn(elefantePrefab);
@@ -41,6 +42,7 @@ public class Spawner : MonoBehaviour
 
     IEnumerator SpawnMonarcas()
     {
+        float elapsedTime = 0f;
         while (elapsedTime < totalSpawnDuration)
         {
             Spawn(monarcaPrefab);
@@ -50,7 +52,7 @@ public class Spawner : MonoBehaviour
 
     IEnumerator SpawnSpecialCharacters()
     {
-
+        float elapsedTime = 0f;
         float specialCharacterSpawnInterval = 15.0f;
 
         while (elapsedTime < totalSpawnDuration)
