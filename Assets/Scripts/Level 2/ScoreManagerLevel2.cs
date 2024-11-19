@@ -5,20 +5,19 @@ using TMPro;
 
 public class ScoreManagerLevel : MonoBehaviour
 {
-    private int score1 = 0;
-    private int maxscore1 = 0;
-    private int score2 = 0; // Puntaje inicial
-    private int maxscore2 = 0;
-    public TextMeshProUGUI scoreText; // Referencia al texto de puntaje en el Canvas
+    
+    public TextMeshProUGUI scoreText; 
     private ScoreManager scoremanager;
 
     void Start()
     {
+        
          scoremanager = FindObjectOfType<ScoreManager>();
+         scoremanager = ScoreManager.Instance;
     }
     public void UpdateScoreLevel1(int points)
     {
-        score1 += points;
+        scoremanager.score1   += points;
         UpdateScoreText1();
     }
 
@@ -26,11 +25,11 @@ public class ScoreManagerLevel : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.text = "Puntos: " + score1;
-            if(score1 > maxscore1)
+            scoreText.text = "Puntos: " + scoremanager.score1;
+            if(scoremanager.score1 > scoremanager.MaxScore1)
             {
-                maxscore1 = score1;
-                scoremanager.UpdateMaxScore1(maxscore1);
+                scoremanager.MaxScore1 = scoremanager.score1;
+               
             }
         }
         else
@@ -39,26 +38,22 @@ public class ScoreManagerLevel : MonoBehaviour
         }
     }
 
-// Método para actualizar el puntaje
-public void UpdateScoreLevel2(int points)
+    public void UpdateScoreLevel2(int points)
     {
-        score2 += points;
+        scoremanager.score2 += points;
         UpdateScoreText2();
     }
 
-    // Método para actualizar el texto del puntaje en pantalla
     private void UpdateScoreText2()
     {
         if (scoreText != null)
         {
-            scoreText.text = "Puntos: " + score2;
-            if(score2 > maxscore2)
+            scoreText.text = "Puntos: " + scoremanager.score2;
+            if(scoremanager.score2 > scoremanager.MaxScore2)
             {
-                maxscore2 = score2;
-                scoremanager.UpdateMaxScore2(maxscore2);
+                scoremanager.MaxScore2 = scoremanager.score2;
             }
         }
-        
         else
         {
             Debug.LogError("Score Text no está asignado en el ScoreManager.");

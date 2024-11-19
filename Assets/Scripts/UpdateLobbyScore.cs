@@ -6,27 +6,36 @@ using System;
 
 public class UpdateLobbyScore : MonoBehaviour
 {
-    public TextMeshProUGUI lobbyScore1;
-    //public TextMeshProUGUI lobbyScore2;
-    private int totalscore = 0;
+    public TextMeshProUGUI lobbyScore;
+    
     
     private ScoreManager scoreManager;
 
     void Start()
     {
-        scoreManager = FindObjectOfType<ScoreManager>();
+        
+        scoreManager = ScoreManager.Instance;
+        UpdateTotalGameScore();
     }
     private void Update()
     {
         ShowScoreText1();
     }
-    public void UpdateTotalScoreText(int points)
+    public void UpdateTotalGameScore()
     {
-        totalscore += points;
+        
+        scoreManager.MaxTotalGame = scoreManager.MaxTotalLevels; // añadir mas para mas juegos
     }
      private void ShowScoreText1()
     {
-        int score = PlayerPrefs.GetInt("Level1Score", totalscore); 
-        lobbyScore1.text = score.ToString();
+        if (lobbyScore != null)
+        {
+            lobbyScore.text = "Puntos" + scoreManager.MaxTotalGame;
+        }
+        else
+        {
+            Debug.LogError("Score Text no está asignado en el ScoreManager.");
+        }
+        
     }
 }

@@ -1930,7 +1930,6 @@ GameObject:
   m_Component:
   - component: {fileID: 890511597}
   - component: {fileID: 890511596}
-  - component: {fileID: 890511598}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -1950,8 +1949,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d6c5ec780e8f04fa3af080290c295d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textScore1: {fileID: 0}
-  textScore2: {fileID: 0}
+  score1: 0
+  score2: 0
+  MaxScore1: 0
+  MaxScore2: 0
+  MaxTotalLevels: 0
+  MaxTotalGame: 0
 --- !u!4 &890511597
 Transform:
   m_ObjectHideFlags: 0
@@ -1967,19 +1970,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &890511598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890511595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bf26df90b71f4b05a2027b006de8efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 505729563}
 --- !u!1 &937973517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,7 +3005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d68c8e3e41237409be88b35d7d46c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lobbyScore1: {fileID: 1690877377}
+  lobbyScore: {fileID: 1690877377}
 --- !u!1 &1489983847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3974,7 +3964,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 101.8
+  m_fontSize: 101.7
   m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 1
