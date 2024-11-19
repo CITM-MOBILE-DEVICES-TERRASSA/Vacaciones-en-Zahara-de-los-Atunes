@@ -900,7 +900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 935124049}
   - component: {fileID: 935124048}
-  - component: {fileID: 935124051}
+  - component: {fileID: 935124050}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -935,19 +935,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &935124051
+--- !u!114 &935124050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935124047}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bf26df90b71f4b05a2027b006de8efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 74d6c5ec780e8f04fa3af080290c295d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1241577540}
+  score1: 0
+  score2: 0
+  MaxScore1: 0
+  MaxScore2: 0
+  MaxTotalLevels: 0
+  MaxTotalGame: 0
 --- !u!1 &969952578
 GameObject:
   m_ObjectHideFlags: 0
