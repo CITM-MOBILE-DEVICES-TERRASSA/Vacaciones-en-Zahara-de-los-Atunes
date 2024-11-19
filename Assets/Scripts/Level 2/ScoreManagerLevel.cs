@@ -7,7 +7,7 @@ public class ScoreManagerLevel : MonoBehaviour
 {
     
     public TextMeshProUGUI scoreText; 
-    private ScoreManager scoremanager;
+    public ScoreManager scoremanager;
 
     void Start()
     {

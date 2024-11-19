@@ -2,20 +2,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ClickableObject : MonoBehaviour
-{    
+{
     public enum ObjectType { Elefante, Monarca, PedroSanchez, ReinaSofia }
     public ObjectType objectType;
-        
+
     private int elefantePoints = 100;
     private int monarcaPoints = -75;
     private int pedroSanchezPoints = 500;
     private int reinaSofiaPoints = -1000;
-        
+
     private ScoreManagerLevel scoreManager;
     private SettingsButton settings;
+    private TimeOut endGame;
 
     void Start()
-    {        
+    {
         scoreManager = FindObjectOfType<ScoreManagerLevel>();
 
         if (scoreManager == null)
@@ -24,6 +25,7 @@ public class ClickableObject : MonoBehaviour
         }
 
         settings = FindObjectOfType<SettingsButton>();
+        endGame = FindObjectOfType<TimeOut>();
 
         if (settings == null)
         {
@@ -39,10 +41,10 @@ public class ClickableObject : MonoBehaviour
 
 
     void OnMouseDown()
-    {        
+    {
         int points = 0;
 
-        if (settings.isPaused != true)
+        if (!(settings.isPaused || endGame.isPaused))
         {
             switch (objectType)
             {
@@ -59,15 +61,16 @@ public class ClickableObject : MonoBehaviour
                     points = reinaSofiaPoints;
                     break;
             }
-                        
+
             if (scoreManager != null)
             {
                 scoreManager.UpdateScoreLevel2(points);
             }
 
-            // Destruye el objeto al hacer clic
             Destroy(gameObject);
         }
 
     }
+
+
 }
