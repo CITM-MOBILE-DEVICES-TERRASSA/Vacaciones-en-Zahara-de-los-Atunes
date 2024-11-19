@@ -14,6 +14,8 @@ public class ScoreManagerLevel : MonoBehaviour
         
          scoremanager = FindObjectOfType<ScoreManager>();
          scoremanager = ScoreManager.Instance;
+         scoremanager.score1 = 0;
+         scoremanager.score2 = 0;
     }
     public void UpdateScoreLevel1(int points)
     {
