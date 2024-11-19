@@ -33,6 +33,12 @@ public class ClickableObject : MonoBehaviour
         {
             Debug.LogError("No se encontró el SettingsButton en la escena.");
         }
+
+        if (objectType == ObjectType.PedroSanchez)
+        {            
+            RandomMover randomMover = gameObject.AddComponent<RandomMover>();
+            randomMover.canvasRect = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
+        }
     }
 
 
@@ -41,7 +47,8 @@ public class ClickableObject : MonoBehaviour
         // Determina los puntos basados en el tipo de objeto
         int points = 0;
 
-        if (settings.isPaused != true) {
+        if (settings.isPaused != true)
+        {
             switch (objectType)
             {
                 case ObjectType.Elefante:
