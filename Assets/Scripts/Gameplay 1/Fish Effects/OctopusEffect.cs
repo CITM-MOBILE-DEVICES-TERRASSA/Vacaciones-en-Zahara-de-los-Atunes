@@ -13,8 +13,11 @@ public class OctopusEffect : FishEffectBase
 
         var g = FindObjectOfType<Canvas>().gameObject;
         var instance = g.AddComponent<Image>();
-        instance.sprite = inkSprite;
-        
-        Destroy(instance, duration);
+        if (instance)
+        {
+            instance.sprite = inkSprite;
+
+            Destroy(instance, duration);
+        }
     }
 }
