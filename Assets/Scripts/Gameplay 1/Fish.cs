@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class PositionMark : MonoBehaviour
+
+
+public class Fish : MonoBehaviour
 {
-    public GameObject prefab;
+    [FormerlySerializedAs("prefab")] public GameObject markPrefab;
     public GameObject instance;
+
+    public FishEffectBase effect;
+    
     private void Start()
     {
         CreatePoint();
@@ -13,9 +19,9 @@ public class PositionMark : MonoBehaviour
     
 
     
-        public void CreatePoint()
+        private void CreatePoint()
         {
-            if (prefab == null)
+            if (markPrefab == null)
             {
                 Debug.LogError("No se ha asignado un prefab en el inspector.");
                 return;
@@ -36,7 +42,7 @@ public class PositionMark : MonoBehaviour
 
             Vector3 spawnPosition = new Vector3(randomX, transform.position.y + randomy, transform.position.z);
 
-            instance = Instantiate(prefab, spawnPosition, Quaternion.identity);
+            instance = Instantiate(markPrefab, spawnPosition, Quaternion.identity);
             instance.transform.parent = gameObject.transform;
         }
 
