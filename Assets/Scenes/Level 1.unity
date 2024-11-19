@@ -1763,7 +1763,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  acceleration: 0
+  acceleration: 0.1
+  accelDelay: 1
 --- !u!65 &873022300
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2386,11 +2387,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226026166}
   m_CullTransparentMesh: 1
---- !u!1 &1276426075 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1502791765520682186, guid: 9e1400686dab471448be794f6538a0e5, type: 3}
-  m_PrefabInstance: {fileID: 5428035629553360115}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1507546289
 GameObject:
   m_ObjectHideFlags: 0
@@ -3501,14 +3497,6 @@ PrefabInstance:
     - target: {fileID: 3399525323462255336, guid: 226e49d87422aa741a6d3054ff3946ad, type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3467873829507596741, guid: 226e49d87422aa741a6d3054ff3946ad, type: 3}
-      propertyPath: fish
-      value: 
-      objectReference: {fileID: 1276426075}
-    - target: {fileID: 3467873829507596741, guid: 226e49d87422aa741a6d3054ff3946ad, type: 3}
-      propertyPath: cutAngle
-      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5274430529705103673, guid: 226e49d87422aa741a6d3054ff3946ad, type: 3}
       propertyPath: m_Name

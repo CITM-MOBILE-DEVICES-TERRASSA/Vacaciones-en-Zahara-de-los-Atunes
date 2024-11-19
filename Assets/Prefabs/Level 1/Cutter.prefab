@@ -99,9 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fish: {fileID: 0}
-  marker: {fileID: 0}
-  cutScore: 0
-  distanceX: 0
+  maxScorePerCut: 200
+  distanceFactor: 2
+  cutAnimDuration: 0.3
+  cutAngle: 90
 --- !u!64 &5839613099731193780
 MeshCollider:
   m_ObjectHideFlags: 0
