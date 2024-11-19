@@ -21,7 +21,7 @@ public class CuttingScript : MonoBehaviour
     void Start()
     {
         scoremanagerlevel = FindObjectOfType<ScoreManagerLevel>();
-        initialRotation = transform.rotation;
+        initialRotation = transform.GetChild(0).rotation;
 
     }
 
@@ -37,12 +37,15 @@ public class CuttingScript : MonoBehaviour
     {
         float elapsedTime = 0f;
 
+        Transform pivot = transform.GetChild(0);
+        
+        float initAngle = initialRotation.eulerAngles.x;
         //rotar cuchillo
         while (elapsedTime < cutAnimDuration)
         {
             float t = elapsedTime / cutAnimDuration;
             float angle = Mathf.Lerp(0f, cutAngle, t);
-            transform.rotation = Quaternion.Euler(-angle, 0f, 0f);
+            pivot.rotation = Quaternion.Euler(initAngle-angle, 0f, 0f);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -53,12 +56,12 @@ public class CuttingScript : MonoBehaviour
         {
             float t = elapsedTime/cutAnimDuration;
             float angle = Mathf.Lerp(cutAngle, 0f, t);
-            transform.rotation = Quaternion.Euler(-angle, 0f, 0f);
+            pivot.rotation = Quaternion.Euler(initAngle-angle, 0f, 0f);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        transform.rotation = initialRotation;
+        pivot.rotation = initialRotation;
     }
 
     public void PerformCut()
@@ -81,7 +84,8 @@ public class CuttingScript : MonoBehaviour
         fish.AddComponent<MeshCollider>().convex = true;
         fish.transform.position = Vector3.zero;
 
-        var marker = fish.GetComponent<PositionMark>().instance.transform;
+        var fishScript = fish.GetComponent<Fish>();
+        var marker = fishScript.instance.transform;
 
         if (marker != null)
         {
@@ -92,6 +96,8 @@ public class CuttingScript : MonoBehaviour
             var cutScore = Mathf.RoundToInt(maxScorePerCut/(1+(distanceX*distanceFactor)));
             scoremanagerlevel.UpdateScoreLevel1(cutScore);
         }
+        
+        fishScript.effect.ApplyEffect();
     }
 
 

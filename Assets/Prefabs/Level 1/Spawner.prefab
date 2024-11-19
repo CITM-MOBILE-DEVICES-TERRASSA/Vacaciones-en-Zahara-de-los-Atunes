@@ -68,4 +68,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishPrefabs:
   - {fileID: 1502791765520682186, guid: 9e1400686dab471448be794f6538a0e5, type: 3}
+  - {fileID: 2491962684011648814, guid: efb90350b8d287241861ba4cff6888dd, type: 3}
   timeBetweenSpawns: 3
