@@ -30,6 +30,7 @@ public class SettingsButton : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        Time.timeScale = 1f;
         SceneLoader.Instance.LoadMainLobby();
     }
 
