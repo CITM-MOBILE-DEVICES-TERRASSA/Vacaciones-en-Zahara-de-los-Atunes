@@ -1858,7 +1858,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.45
+  m_fontSize: 42.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2083,7 +2083,7 @@ GameObject:
   - component: {fileID: 919480518}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4194,7 +4194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7411261224224248134, guid: 226e49d87422aa741a6d3054ff3946ad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.96
+      value: 0.356
       objectReference: {fileID: 0}
     - target: {fileID: 7411261224224248134, guid: 226e49d87422aa741a6d3054ff3946ad, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4253,6 +4253,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 27193344}
   - {fileID: 2072515990}
   - {fileID: 1900880169}
   - {fileID: 671244266}
@@ -4266,4 +4267,3 @@ SceneRoots:
   - {fileID: 935124049}
   - {fileID: 1690755720}
   - {fileID: 1339396433}
-  - {fileID: 27193344}
