@@ -123,7 +123,6 @@ MonoBehaviour:
   markPrefab: {fileID: 262816029394547060, guid: 6b9a91173baf3884dbb552c59867c1aa, type: 3}
   instance: {fileID: 0}
   effect: {fileID: 11400000, guid: b08138b33df0a3544847f49a9826ab02, type: 2}
-  cutSound: {fileID: 0}
 --- !u!54 &5168049777918808660
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,7 +161,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 68fce589a824078498ab4d29c53b1354, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
