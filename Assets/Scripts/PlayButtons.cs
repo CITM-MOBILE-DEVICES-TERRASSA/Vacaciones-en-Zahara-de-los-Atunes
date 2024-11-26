@@ -5,9 +5,14 @@ using UnityEngine;
 public class PlayButtons : MonoBehaviour
 {
     public GameObject playButton;
-
+    private AudioSource audioSource;
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void PlayMinigameOne()
     {
+        audioSource.Play();
         SceneLoader.Instance.LoadMeta();
     }
 
