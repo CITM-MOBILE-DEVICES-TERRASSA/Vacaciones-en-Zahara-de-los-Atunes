@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e9ac086a634d69bff2a295d06ecb95, type: 3}
   m_Name: OctopusEffect
   m_EditorClassIdentifier: 
-  inkSprite: {fileID: 21300000, guid: b6862e9f29f113c45a27ea3511568315, type: 3}
+  inkSprite: {fileID: 21300000, guid: 12622d39eb98ec04c816d1bd84be628e, type: 3}
   duration: 3
