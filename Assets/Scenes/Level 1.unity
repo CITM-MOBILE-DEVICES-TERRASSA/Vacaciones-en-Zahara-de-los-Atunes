@@ -1934,6 +1934,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &891932048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2341085941674278668, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+  m_PrefabInstance: {fileID: 1067372796}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919480517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,6 +2350,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013260674}
   m_CullTransparentMesh: 1
+--- !u!1001 &1067372796
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2341085941674278668, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+      propertyPath: m_Name
+      value: Sangre
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484097961737642708, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484097961737642708, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484097961737642708, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0731647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484097961737642708, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484097961737642708, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484097961737642708, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484097961737642708, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484097961737642708, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484097961737642708, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484097961737642708, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670198470974916867, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a51db545c7ae6e74bb977fe2e3512042, type: 3}
 --- !u!1 &1226026166
 GameObject:
   m_ObjectHideFlags: 0
@@ -4051,6 +4117,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3467873829507596741, guid: 226e49d87422aa741a6d3054ff3946ad, type: 3}
+      propertyPath: sangre
+      value: 
+      objectReference: {fileID: 891932048}
     - target: {fileID: 5274430529705103673, guid: 226e49d87422aa741a6d3054ff3946ad, type: 3}
       propertyPath: m_Name
       value: Cutter
@@ -4134,3 +4204,4 @@ SceneRoots:
   - {fileID: 935124049}
   - {fileID: 1690755720}
   - {fileID: 1339396433}
+  - {fileID: 1067372796}

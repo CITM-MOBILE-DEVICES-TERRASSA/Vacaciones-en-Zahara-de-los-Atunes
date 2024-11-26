@@ -8,6 +8,7 @@ public class CuttingScript : MonoBehaviour
 {
     public GameObject fish;
     private Fish cutable;
+    public GameObject sangre;
     private ScoreManagerLevel scoremanagerlevel;
     [Min(1)]public int maxScorePerCut = 200;
     // Relacion inversamente proporcional de la distancia
@@ -100,7 +101,15 @@ public class CuttingScript : MonoBehaviour
         }
 
 
-
+        if (sangre != null)
+        {
+            var particleSystem = sangre.GetComponent<ParticleSystem>();
+            if (particleSystem != null)
+            {
+                // Reproducir el sistema de partículas
+                particleSystem.Play();
+            }
+        }
 
         if (marker != null)
         {
