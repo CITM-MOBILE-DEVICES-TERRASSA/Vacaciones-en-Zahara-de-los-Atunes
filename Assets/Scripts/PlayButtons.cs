@@ -16,4 +16,9 @@ public class PlayButtons : MonoBehaviour
         SceneLoader.Instance.LoadMeta();
     }
 
+    public void PlayMinigameTwo()
+    {
+        audioSource.Play();
+        SceneLoader.Instance.LoadMeta1();
+    }
 }

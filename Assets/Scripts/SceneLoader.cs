@@ -34,6 +34,10 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName: "MetaScreen");
     }
+    public void LoadMeta1()
+    {
+        SceneManager.LoadScene(sceneName: "Meta");
+    }
     public void LoadGameplay()
     {
         SceneManager.LoadScene(sceneName: "Level 1");

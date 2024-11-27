@@ -1,41 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.Events;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager
 {
-    #region Singleton
-    private static ScoreManager _instance;
-    public static ScoreManager Instance => _instance;
+    public ScoreManagerLevel scoremanager;
+    public static ScoreManager instance = new ScoreManager();
+
+    public int score = 0;
+    public UnityEvent<int> OnScoreChanged = new UnityEvent<int>();
 
     private void Awake()
     {
-        if (_instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-
+        score = PlayerPrefs.GetInt("Score", 0);
     }
-    #endregion
 
+    public int GetScore() => score;
+    public int SetScore(int newScore)
+    {
+        score += newScore;
 
-    private int score;
-    private int totalScore;
+        PlayerPrefs.SetInt("Score", score);
+        PlayerPrefs.Save();
 
-    public int score1;
-    public int score2;
-    public int MaxScore1;
-    public int MaxScore2;
-    public int MaxTotalLevels;
-    public int MaxTotalGame;
- 
-    
-    
+        OnScoreChanged?.Invoke(score);
 
+        return score;
+    }
 }

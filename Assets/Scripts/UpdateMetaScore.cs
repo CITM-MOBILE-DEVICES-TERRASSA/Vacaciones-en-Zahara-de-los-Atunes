@@ -10,12 +10,12 @@ public class UpdateMetaScore : MonoBehaviour
     public TextMeshProUGUI Level1ScoreText;
     public TextMeshProUGUI Level2ScoreText;
 
-    private ScoreManager scoreManager;
+    private ScoreManagerOrig scoreManagerOrig;
 
     private void Start()
     {
-        
-        scoreManager = ScoreManager.Instance;
+
+        scoreManagerOrig = ScoreManagerOrig.Instance;
         UpdateScoreTotal();
         
     }
@@ -27,14 +27,14 @@ public class UpdateMetaScore : MonoBehaviour
     }
     private void UpdateScoreTotal()
     {
-        scoreManager.MaxTotalLevels = scoreManager.MaxScore1 + scoreManager.MaxScore2;
-        scoreManager.MaxTotalGame = scoreManager.MaxTotalLevels;
+        scoreManagerOrig.MaxTotalLevels = scoreManagerOrig.MaxScore1 + scoreManagerOrig.MaxScore2;
+        scoreManagerOrig.MaxTotalGame = scoreManagerOrig.MaxTotalLevels;
     }
     private void UpdateMetaScoreTotalText()
     {
         if (metaScoreText != null)
         {
-            metaScoreText.text = "Puntos: " + scoreManager.MaxTotalLevels;
+            metaScoreText.text = "Puntos: " + scoreManagerOrig.MaxTotalLevels;
         }
         else
         {
@@ -46,7 +46,7 @@ public class UpdateMetaScore : MonoBehaviour
     {
         if (Level1ScoreText != null)
         {
-            Level1ScoreText.text = "Puntos: " + scoreManager.MaxScore1;
+            Level1ScoreText.text = "Puntos: " + scoreManagerOrig.MaxScore1;
         }
         else
         {
@@ -58,7 +58,7 @@ public class UpdateMetaScore : MonoBehaviour
     {
         if (Level2ScoreText != null)
         {
-            Level2ScoreText.text = "Puntos: " + scoreManager.MaxScore2;
+            Level2ScoreText.text = "Puntos: " + scoreManagerOrig.MaxScore2;
         }
         else
         {

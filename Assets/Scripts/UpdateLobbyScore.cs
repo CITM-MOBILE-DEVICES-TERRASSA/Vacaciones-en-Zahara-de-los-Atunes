@@ -6,15 +6,13 @@ using System;
 
 public class UpdateLobbyScore : MonoBehaviour
 {
-    public TextMeshProUGUI lobbyScore;
+    public TextMeshProUGUI lobbyScore; 
     
-    
-    private ScoreManager scoreManager;
+    private ScoreManagerOrig scoreManagerOrig;
 
     void Start()
     {
-        
-        scoreManager = ScoreManager.Instance;
+        scoreManagerOrig = ScoreManagerOrig.Instance;
         UpdateTotalGameScore();
     }
     private void Update()
@@ -24,13 +22,13 @@ public class UpdateLobbyScore : MonoBehaviour
     public void UpdateTotalGameScore()
     {
         UpdateScoreTotal();
-        scoreManager.MaxTotalGame = scoreManager.MaxTotalLevels; // a�adir mas para mas juegos
+        scoreManagerOrig.MaxTotalGame = scoreManagerOrig.MaxTotalLevels + ScoreManager.instance.score; // a�adir mas para mas juegos
     }
      private void ShowScoreText1()
     {
         if (lobbyScore != null)
         {
-            lobbyScore.text = "Puntos" + scoreManager.MaxTotalGame;
+            lobbyScore.text = "Puntos" + scoreManagerOrig.MaxTotalGame;
         }
         else
         {
@@ -40,7 +38,7 @@ public class UpdateLobbyScore : MonoBehaviour
     }
     private void UpdateScoreTotal()
     {
-        scoreManager.MaxTotalLevels = scoreManager.MaxScore1 + scoreManager.MaxScore2;
-        scoreManager.MaxTotalGame = scoreManager.MaxTotalLevels;
+        scoreManagerOrig.MaxTotalLevels = scoreManagerOrig.MaxScore1 + scoreManagerOrig.MaxScore2;
+        scoreManagerOrig.MaxTotalGame = scoreManagerOrig.MaxTotalLevels;
     }
 }
