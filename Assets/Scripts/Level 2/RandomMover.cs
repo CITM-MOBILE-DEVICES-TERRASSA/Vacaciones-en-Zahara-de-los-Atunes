@@ -5,7 +5,7 @@ public class RandomMover : MonoBehaviour
     public float moveSpeed = 300f;
     public RectTransform canvasRect;
     private Vector2 targetPosition;
-
+    
     void Start()
     {
         SetNewTargetPosition();

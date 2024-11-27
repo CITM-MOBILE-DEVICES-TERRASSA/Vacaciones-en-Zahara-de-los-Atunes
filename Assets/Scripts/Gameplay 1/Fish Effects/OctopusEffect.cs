@@ -11,7 +11,7 @@ public class OctopusEffect : FishEffectBase
     {
         Debug.Log("Octopus Effect");
 
-        var g = FindObjectOfType<Canvas>().gameObject;
+        var g = GameObject.FindWithTag("Canvas");
         var instance = g.AddComponent<Image>();
         if (instance)
         {

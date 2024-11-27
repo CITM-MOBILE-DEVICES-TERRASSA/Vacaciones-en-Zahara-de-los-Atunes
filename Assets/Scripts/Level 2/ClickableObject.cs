@@ -14,7 +14,6 @@ public class ClickableObject : MonoBehaviour
     private ScoreManagerLevel scoreManager;
     private SettingsButton settings;
     private TimeOut endGame;
-
     void Start()
     {
         scoreManager = FindObjectOfType<ScoreManagerLevel>();
@@ -43,7 +42,7 @@ public class ClickableObject : MonoBehaviour
     void OnMouseDown()
     {
         int points = 0;
-
+        
         if (!(settings.isPaused || endGame.isPaused))
         {
             switch (objectType)

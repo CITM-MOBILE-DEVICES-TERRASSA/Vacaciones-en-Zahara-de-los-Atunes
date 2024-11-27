@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cuttable
   - CutMark
+  - Canvas
   layers:
   - Default
   - TransparentFX

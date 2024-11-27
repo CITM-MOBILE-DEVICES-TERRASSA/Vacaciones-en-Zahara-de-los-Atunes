@@ -7,6 +7,8 @@ using UnityEngine;
 public class CuttingScript : MonoBehaviour
 {
     public GameObject fish;
+    private Fish cutable;
+    public GameObject sangre;
     private ScoreManagerLevel scoremanagerlevel;
     [Min(1)]public int maxScorePerCut = 200;
     // Relacion inversamente proporcional de la distancia
@@ -17,12 +19,14 @@ public class CuttingScript : MonoBehaviour
     public float cutAngle = 45f;
     private Quaternion initialRotation;
 
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        cutable = FindObjectOfType<Fish>(); 
         scoremanagerlevel = FindObjectOfType<ScoreManagerLevel>();
         initialRotation = transform.GetChild(0).rotation;
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -67,18 +71,23 @@ public class CuttingScript : MonoBehaviour
     public void PerformCut()
     {
         // Convertir a corutina y añadir un delay para sincronizar con la animacion?
-        
+
         if (fish == null) return;
 
         //corutina para anim de corte
         StartCoroutine(CutKnifeAnim());
-        
+
+        // Realizamos el sonido del corte
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
         // Realizamos la operacion de corte
         var m = CSG.Subtract(fish, gameObject);
-    
+
         fish.GetComponent<MeshFilter>().sharedMesh = m.mesh;
         fish.GetComponent<MeshRenderer>().sharedMaterials = m.materials.ToArray();
-    
+
         // Recalcula la colision del objeto cortado
         Destroy(fish.GetComponent<Collider>());
         fish.AddComponent<MeshCollider>().convex = true;
@@ -86,6 +95,21 @@ public class CuttingScript : MonoBehaviour
 
         var fishScript = fish.GetComponent<Fish>();
         var marker = fishScript.instance.transform;
+        if (fishScript != null)
+        {
+            fishScript.PlayCutSound();
+        }
+
+
+        if (sangre != null)
+        {
+            var particleSystem = sangre.GetComponent<ParticleSystem>();
+            if (particleSystem != null)
+            {
+                // Reproducir el sistema de partículas
+                particleSystem.Play();
+            }
+        }
 
         if (marker != null)
         {

@@ -11,15 +11,29 @@ public class Fish : MonoBehaviour
     public GameObject instance;
 
     public FishEffectBase effect;
-    
+
+    private AudioSource audioSource;
+
+   
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+       
         CreatePoint();
     }
-    
+    public void PlayCutSound()
+    {
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
+       
+    }
 
-    
-        private void CreatePoint()
+
+
+    private void CreatePoint()
         {
             if (markPrefab == null)
             {
