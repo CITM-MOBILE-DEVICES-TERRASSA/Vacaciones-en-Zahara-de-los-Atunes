@@ -667,6 +667,52 @@ RectTransform:
   m_AnchoredPosition: {x: 20, y: 689}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &872774762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 872774764}
+  - component: {fileID: 872774763}
+  m_Layer: 0
+  m_Name: CrosshairController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &872774763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872774762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb0d0c90a9259643bbc7ed4f4014747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crossTexture: {fileID: 2800000, guid: 6c6bd7cd04b25344e9be737ce7fcac09, type: 3}
+  shootSound: {fileID: 8300000, guid: 3adcbdd75c4bb404a85f26398e62ed7a, type: 3}
+--- !u!4 &872774764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872774762}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.6916887, y: 3.7536507, z: -0.08519437}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1014724015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,3 +1597,4 @@ SceneRoots:
   - {fileID: 1014724019}
   - {fileID: 1979348588}
   - {fileID: 747270687}
+  - {fileID: 872774764}
