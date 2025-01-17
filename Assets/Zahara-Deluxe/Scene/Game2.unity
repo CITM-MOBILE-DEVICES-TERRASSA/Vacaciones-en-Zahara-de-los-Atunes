@@ -512,8 +512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befe93afb9c471e4fa55fab785228e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ElephantPrefab: {fileID: 4266902083898251432, guid: a2d1203b712386c42a2c70e5691cb1a8, type: 3}
-  PrincesaPrefab: {fileID: 3279957485982641001, guid: 54b042cd0c1c517498313274c7984218, type: 3}
+  ElephantPrefab: {fileID: 8471338336397678217, guid: 2535c7454c07fec4d860473badb364cd, type: 3}
+  PrincesaPrefab: {fileID: 7582915408700307261, guid: b1742ce6425715b49beb0280d8b718b2, type: 3}
   spawnRangeX: 850
   spawnPosY: 40
   spawnPosY2: -230
