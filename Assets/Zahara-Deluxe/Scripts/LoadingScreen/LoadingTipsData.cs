@@ -11,7 +11,7 @@ namespace LoadingSystem.Data
         public string GetRandomTip()
         {
             if (gameTips == null || gameTips.Length == 0)
-                return "¡Bienvenido al juego!";
+                return "¡Welcome to the game!";
 
             return gameTips[Random.Range(0, gameTips.Length)];
         }

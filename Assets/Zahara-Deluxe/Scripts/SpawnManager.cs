@@ -44,7 +44,7 @@ public class SpawnManager : MonoBehaviour
     {
         float randomX = Random.Range(-spawnRangeX, spawnRangeX);
         float randomY = spawnHeights[Random.Range(0, spawnHeights.Count)];
-        return new Vector3(randomX, randomY, 917);
+        return new Vector3(randomX, randomY, 0);
     }
 
     IEnumerator RotateToUpright(Transform objTransform)
