@@ -1,19 +1,42 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Knife : MonoBehaviour
 {
     public float cutForce = 10f; // Fuerza de corte (si aplica física)
     public float cutAngle = 90f; // Ángulo de rotación para el corte
     public float cutSpeed = 5f; // Velocidad del corte
+    public float inkDuration = 3f; // Duración del efecto de tinta
+    public float fadeSpeed = 1f; // Velocidad a la que se desvanece la tinta
+
     private bool isCutting = false; // Para evitar cortes múltiples al mismo tiempo
     private bool hasCut = false;
+    private bool isInked = false;
     private Quaternion initialRotation; // Rotación inicial del cuchillo
     ScoreL1 score;
+
+    private Image inkOverlay; // Imagen negra semi-transparente para simular la tinta
+    private Color originalColor;
+
     void Start()
     {
         // Guarda la rotación inicial del cuchillo
         initialRotation = transform.rotation;
         score = GameObject.Find("ScoreManager").GetComponent<ScoreL1>();
+
+        // Busca el objeto InkOverlay en el Canvas
+        inkOverlay = GameObject.Find("Ink")?.GetComponent<Image>();
+        if (inkOverlay == null)
+        {
+            Debug.LogError("No se encontró InkOverlay en la escena. Asegúrate de tener un objeto llamado 'InkOverlay'.");
+            return;
+        }
+
+        // Configura el color inicial como transparente
+        originalColor = inkOverlay.color;
+        originalColor.a = 0;
+        inkOverlay.color = originalColor;
     }
 
     void Update()
@@ -27,15 +50,21 @@ public class Knife : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Cuttable") && !hasCut)
+        // Si el cuchillo colisiona con un calamar (con etiqueta "Squid"), aplica el efecto de tinta
+        if (other.gameObject.CompareTag("Squid") && !isInked)
+        {
+            StartCoroutine(ApplyInkEffect());
+        }
+
+        // Realiza el corte si colisiona con un objeto cortable
+        if (other.gameObject.CompareTag("Cuttable") && !hasCut && isCutting)
         {
             CutObject(other.gameObject);
-            hasCut=true;
+            hasCut = true;
         }
-        else if (other.gameObject.CompareTag("Cinta") && !hasCut)
+        else if (other.gameObject.CompareTag("Cinta") && !hasCut && isCutting)
         {
-            Debug.Log("hit");
-            hasCut=true;
+            hasCut = true;
         }
     }
 
@@ -79,6 +108,39 @@ public class Knife : MonoBehaviour
         transform.rotation = initialRotation;
 
         isCutting = false;
-        hasCut=false;
+        hasCut = false;
+    }
+
+    IEnumerator ApplyInkEffect()
+    {
+        isInked = true;
+
+        // Oscurece gradualmente la pantalla
+        float elapsedTime = 0f;
+        while (elapsedTime < inkDuration / 4)
+        {
+            originalColor.a = Mathf.Clamp01(elapsedTime / (inkDuration / 4));
+            inkOverlay.color = originalColor;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Mantén la opacidad máxima durante un breve periodo
+        yield return new WaitForSeconds(inkDuration / 2);
+
+        // Desvanece gradualmente la pantalla
+        elapsedTime = 0f;
+        while (elapsedTime < inkDuration / 3)
+        {
+            originalColor.a = Mathf.Clamp01(1 - (elapsedTime / (inkDuration / 2)));
+            inkOverlay.color = originalColor;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Restaura la transparencia completa
+        originalColor.a = 0;
+        inkOverlay.color = originalColor;
+        isInked = false;
     }
 }
