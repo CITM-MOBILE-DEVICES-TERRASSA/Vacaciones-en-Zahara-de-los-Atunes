@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
     public float timeLeft = 150f;
     public TextMeshProUGUI countdownText;
+    public TextMeshProUGUI timeUpText;
 
     // Update is called once per frame
     void Update()
@@ -34,5 +35,7 @@ public class Timer : MonoBehaviour
     {
       countdownText.text = "00:00";
       Debug.Log("Time has run out!");
+      Time.timeScale = 0;
+      timeUpText.gameObject.SetActive(true);
     }
 }

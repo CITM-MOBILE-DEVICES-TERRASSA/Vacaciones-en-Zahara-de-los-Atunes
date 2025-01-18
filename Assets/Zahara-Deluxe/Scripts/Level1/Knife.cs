@@ -5,15 +5,15 @@ public class Knife : MonoBehaviour
     public float cutForce = 10f; // Fuerza de corte (si aplica física)
     public float cutAngle = 90f; // Ángulo de rotación para el corte
     public float cutSpeed = 5f; // Velocidad del corte
-
     private bool isCutting = false; // Para evitar cortes múltiples al mismo tiempo
-    private bool hasCut=false;
+    private bool hasCut = false;
     private Quaternion initialRotation; // Rotación inicial del cuchillo
-
+    ScoreL1 score;
     void Start()
     {
         // Guarda la rotación inicial del cuchillo
         initialRotation = transform.rotation;
+        score = GameObject.Find("ScoreManager").GetComponent<ScoreL1>();
     }
 
     void Update()
@@ -47,6 +47,7 @@ public class Knife : MonoBehaviour
         if (cuttable != null)
         {
             cuttable.Cut();
+            score.updateScore(1);
         }
     }
 
