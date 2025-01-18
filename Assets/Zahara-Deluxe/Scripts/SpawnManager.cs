@@ -13,7 +13,7 @@ public class SpawnManager : MonoBehaviour
     public float spawnPosY3 = -500;
 
     private float startDelay = 2;
-    private float spawnInterval = 1.5f;
+    private float spawnInterval = 1f;
     private List<float> spawnHeights;
 
     void Start()
@@ -28,7 +28,7 @@ public class SpawnManager : MonoBehaviour
         Vector3 spawnPosition = GetRandomSpawnPosition();
 
         // Instanciar el objeto con una rotación inicial inclinada
-        GameObject spawnedObject = Instantiate(prefabToSpawn, spawnPosition, Quaternion.Euler(0, 0, 90));
+        GameObject spawnedObject = Instantiate(prefabToSpawn, spawnPosition, Quaternion.Euler(90, -90, 0));
 
         // Aplicar la animación de rotación hacia la posición recta
         StartCoroutine(RotateToUpright(spawnedObject.transform));
@@ -51,7 +51,7 @@ public class SpawnManager : MonoBehaviour
     {
         Quaternion startRotation = objTransform.rotation;
         Quaternion endRotation = Quaternion.Euler(0, 0, 0);
-        float duration = 1f; // Tiempo para enderezarse
+        float duration = .2f; // Tiempo para enderezarse
         float elapsed = 0;
 
         while (elapsed < duration)
