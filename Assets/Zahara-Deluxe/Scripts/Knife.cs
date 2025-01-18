@@ -55,7 +55,7 @@ public class Knife : MonoBehaviour
         isCutting = true;
 
         // Rotación hacia abajo (corte)
-        Quaternion targetRotation = Quaternion.Euler(transform.eulerAngles.x + cutAngle, transform.eulerAngles.y, transform.eulerAngles.z);
+        Quaternion targetRotation = Quaternion.Euler(transform.eulerAngles.x - cutAngle, transform.eulerAngles.y, transform.eulerAngles.z);
         while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, cutSpeed * Time.deltaTime);

@@ -16,7 +16,7 @@ public class ConveyorBelt : MonoBehaviour
         Rigidbody rb = collision.collider.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            Vector3 force = transform.right * speed;
+            Vector3 force = transform.forward * -speed;
             rb.velocity = force;
         }
     }
