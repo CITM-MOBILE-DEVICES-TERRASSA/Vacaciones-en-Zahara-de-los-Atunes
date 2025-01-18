@@ -7,6 +7,8 @@ TagManager:
   - Cuttable
   - CutMark
   - Canvas
+  - Princess
+  - Elephant
   layers:
   - Default
   - TransparentFX
