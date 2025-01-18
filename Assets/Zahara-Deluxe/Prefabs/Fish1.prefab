@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc8e581629dff149a0097a5bcb7fabb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topHalfPrefab: {fileID: 498066401803776683, guid: e76db67ab0bc4a341bc6f782c5f28c41, type: 3}
-  bottomHalfPrefab: {fileID: 152853062754730191, guid: 14c893c6ac35c104486721c14d497718, type: 3}
+  topHalfPrefab: {fileID: 7184869740038774387, guid: e76db67ab0bc4a341bc6f782c5f28c41, type: 3}
+  bottomHalfPrefab: {fileID: 8926423831343078587, guid: 14c893c6ac35c104486721c14d497718, type: 3}
 --- !u!65 &-3016443691226845987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149072623483990915}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8d4127a1f3dbaef4fa58099e7649a465, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -152,8 +152,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.1628377, y: 0.32781243, z: 1}
+  m_Center: {x: -0.3992882, y: -0.0061041284, z: 0}
 --- !u!54 &2354970876022839717
 Rigidbody:
   m_ObjectHideFlags: 0
