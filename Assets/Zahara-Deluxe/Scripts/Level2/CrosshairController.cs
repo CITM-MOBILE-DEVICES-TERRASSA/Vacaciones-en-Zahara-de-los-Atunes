@@ -5,15 +5,19 @@ using UnityEngine;
 public class CrosshairController : MonoBehaviour
 {
     public Texture2D crossTexture; 
-    public AudioClip shootSound; 
-    private AudioSource audioSource;
+    public AudioClip shootSound;
+    public AudioClip princessHitSound;
+    private AudioSource shootAudioSource;
+    private AudioSource princessAudioSource;
     private Camera mainCamera;
 
     void Start()
     {
         Cursor.visible = false;
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = shootSound;
+        shootAudioSource = gameObject.AddComponent<AudioSource>();
+        shootAudioSource.clip = shootSound;
+        princessAudioSource = gameObject.AddComponent<AudioSource>();
+        princessAudioSource.playOnAwake = false;
         mainCamera = Camera.main;
     }
 
@@ -43,7 +47,6 @@ public class CrosshairController : MonoBehaviour
         Debug.DrawLine(shootPosition, shootPosition + Vector2.right * 0.5f, Color.red, 1f);
 
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(shootPosition, detectionRadius);
-
         Debug.Log($"Objetos detectados: {hitColliders.Length}");
 
         foreach (Collider2D hitCollider in hitColliders)
@@ -62,6 +65,7 @@ public class CrosshairController : MonoBehaviour
                 else if (hitCollider.CompareTag("Princess"))
                 {
                     Debug.Log("¡Princesa golpeada!");
+                    PlayPrincessHitSound();
                     Game2Manager.Instance.UpdateScore(-10);
                     Destroy(hitCollider.gameObject);
                     break;
@@ -89,9 +93,17 @@ public class CrosshairController : MonoBehaviour
 
     private void PlayShootSound()
     {
-        if (audioSource != null && shootSound != null)
+        if (shootAudioSource != null && shootSound != null)
         {
-            audioSource.Play();
+            shootAudioSource.Play();
+        }
+    }
+
+    private void PlayPrincessHitSound()
+    {
+        if (princessAudioSource != null && princessHitSound != null)
+        {
+            princessAudioSource.PlayOneShot(princessHitSound);
         }
     }
 }

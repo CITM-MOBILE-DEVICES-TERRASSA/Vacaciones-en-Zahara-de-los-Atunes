@@ -12,32 +12,85 @@ public class SpawnManager : MonoBehaviour
     public float spawnPosY2 = -230;
     public float spawnPosY3 = -500;
 
+    public int maxObjects = 15; 
+    public float minDistance = 300f;
+    public float objectLifetime = 10f;
+
     private float startDelay = 2;
     private float spawnInterval = 1f;
     private List<float> spawnHeights;
+    private List<GameObject> spawnedObjects;
 
     void Start()
     {
         spawnHeights = new List<float> { spawnPosY, spawnPosY2, spawnPosY3 };
+        spawnedObjects = new List<GameObject>();
         InvokeRepeating("SpawnObject", startDelay, spawnInterval);
     }
 
     void SpawnObject()
     {
+        if (spawnedObjects.Count >= maxObjects)
+        {
+            spawnedObjects.RemoveAll(obj => obj == null);
+            if (spawnedObjects.Count >= maxObjects) return; 
+        }
+
         GameObject prefabToSpawn = ChoosePrefab();
-        Vector3 spawnPosition = GetRandomSpawnPosition();
+        Vector3 spawnPosition = GetValidSpawnPosition();
 
-        // Instanciar el objeto con una rotación inicial inclinada
+        if (spawnPosition == Vector3.zero)
+        {
+            return;
+        }
+
         GameObject spawnedObject = Instantiate(prefabToSpawn, spawnPosition, Quaternion.Euler(90, -90, 0));
+        spawnedObjects.Add(spawnedObject);
 
-        // Aplicar la animación de rotación hacia la posición recta
         StartCoroutine(RotateToUpright(spawnedObject.transform));
+        StartCoroutine(DestroyAfterDelay(spawnedObject));
     }
+
+    IEnumerator DestroyAfterDelay(GameObject obj)
+    {
+        yield return new WaitForSeconds(objectLifetime);
+
+        if (obj != null)
+        {
+            spawnedObjects.Remove(obj);
+            Destroy(obj);
+        }
+    }
+
 
     GameObject ChoosePrefab()
     {
         float chance = Random.value;
         return chance <= 0.7f ? ElephantPrefab : PrincesaPrefab;
+    }
+
+    Vector3 GetValidSpawnPosition()
+    {
+        int maxAttempts = 30; 
+
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            Vector3 candidatePosition = GetRandomSpawnPosition();
+            bool positionIsValid = true;
+
+            foreach (GameObject obj in spawnedObjects)
+            {
+                if (obj != null && Vector3.Distance(obj.transform.position, candidatePosition) < minDistance)
+                {
+                    positionIsValid = false;
+                    break;
+                }
+            }
+
+            if (positionIsValid) return candidatePosition;
+        }
+
+        return Vector3.zero;
     }
 
     Vector3 GetRandomSpawnPosition()
@@ -51,7 +104,7 @@ public class SpawnManager : MonoBehaviour
     {
         Quaternion startRotation = objTransform.rotation;
         Quaternion endRotation = Quaternion.Euler(0, 0, 0);
-        float duration = .2f; // Tiempo para enderezarse
+        float duration = .2f; 
         float elapsed = 0;
 
         while (elapsed < duration)
@@ -61,6 +114,6 @@ public class SpawnManager : MonoBehaviour
             yield return null;
         }
 
-        objTransform.rotation = endRotation; // Asegurar rotación exacta
+        objTransform.rotation = endRotation; 
     }
 }
