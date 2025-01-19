@@ -9,6 +9,8 @@ public class Knife : MonoBehaviour
     public float cutSpeed = 5f; // Velocidad del corte
     public float inkDuration = 3f; // Duración del efecto de tinta
     public float fadeSpeed = 1f; // Velocidad a la que se desvanece la tinta
+    public AudioSource KnifeCut; 
+    public AudioSource FishSquash;
 
     private bool isCutting = false; // Para evitar cortes múltiples al mismo tiempo
     private bool hasCut = false;
@@ -59,11 +61,14 @@ public class Knife : MonoBehaviour
         // Realiza el corte si colisiona con un objeto cortable
         if (other.gameObject.CompareTag("Cuttable") && !hasCut && isCutting)
         {
+            
             CutObject(other.gameObject);
+            FishSquash.Play();
             hasCut = true;
         }
         else if (other.gameObject.CompareTag("Cinta") && !hasCut && isCutting)
         {
+            
             hasCut = true;
         }
     }
@@ -82,6 +87,7 @@ public class Knife : MonoBehaviour
 
     private System.Collections.IEnumerator PerformCut()
     {
+        KnifeCut.Play();
         isCutting = true;
 
         // Rotación hacia abajo (corte)
