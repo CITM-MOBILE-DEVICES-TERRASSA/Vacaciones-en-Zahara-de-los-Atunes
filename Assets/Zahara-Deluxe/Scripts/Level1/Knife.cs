@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,7 +56,9 @@ public class Knife : MonoBehaviour
         // Si el cuchillo colisiona con un calamar (con etiqueta "Squid"), aplica el efecto de tinta
         if (other.gameObject.CompareTag("Squid") && !isInked)
         {
+            FishSquash.Play();  
             StartCoroutine(ApplyInkEffect());
+            Destroy(other.gameObject);
         }
 
         // Realiza el corte si colisiona con un objeto cortable
@@ -123,9 +126,9 @@ public class Knife : MonoBehaviour
 
         // Oscurece gradualmente la pantalla
         float elapsedTime = 0f;
-        while (elapsedTime < inkDuration / 4)
+        while (elapsedTime < inkDuration / 5)
         {
-            originalColor.a = Mathf.Clamp01(elapsedTime / (inkDuration / 4));
+            originalColor.a = Mathf.Clamp01(elapsedTime / (inkDuration / 5));
             inkOverlay.color = originalColor;
             elapsedTime += Time.deltaTime;
             yield return null;
