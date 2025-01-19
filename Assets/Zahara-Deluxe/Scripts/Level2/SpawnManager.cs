@@ -9,8 +9,8 @@ public class SpawnManager : MonoBehaviour
 
     public float spawnRangeX = 850;
     public float spawnPosY = 40;
-    public float spawnPosY2 = -230;
-    public float spawnPosY3 = -500;
+    public float spawnPosY2 = -190;
+    public float spawnPosY3 = -420;
 
     public int maxObjects = 15; 
     public float minDistance = 300f;
@@ -20,6 +20,22 @@ public class SpawnManager : MonoBehaviour
     private float spawnInterval = 1f;
     private List<float> spawnHeights;
     private List<GameObject> spawnedObjects;
+
+    private const int STARTING_SORT_ORDER = 1000;
+    private const int SORT_ORDER_LAYER_DIFFERENCE = 100;
+    public static SpawnManager Instance { get; private set; }
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -45,8 +61,22 @@ public class SpawnManager : MonoBehaviour
         }
 
         GameObject spawnedObject = Instantiate(prefabToSpawn, spawnPosition, Quaternion.Euler(90, -90, 0));
-        spawnedObjects.Add(spawnedObject);
 
+        SpriteRenderer spriteRenderer = spawnedObject.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            int rowIndex;
+            if (Mathf.Approximately(spawnPosition.y, spawnPosY3))
+                rowIndex = 0;
+            else if (Mathf.Approximately(spawnPosition.y, spawnPosY2))
+                rowIndex = 1;
+            else
+                rowIndex = 2;
+
+            spriteRenderer.sortingOrder = STARTING_SORT_ORDER - (rowIndex * SORT_ORDER_LAYER_DIFFERENCE);
+        }
+
+        spawnedObjects.Add(spawnedObject);
         StartCoroutine(RotateToUpright(spawnedObject.transform));
         StartCoroutine(DestroyAfterDelay(spawnedObject));
     }
@@ -61,7 +91,6 @@ public class SpawnManager : MonoBehaviour
             Destroy(obj);
         }
     }
-
 
     GameObject ChoosePrefab()
     {

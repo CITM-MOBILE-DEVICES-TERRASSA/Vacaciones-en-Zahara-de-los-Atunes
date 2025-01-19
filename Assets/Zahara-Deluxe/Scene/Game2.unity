@@ -1379,6 +1379,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1608735735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1608735737}
+  - component: {fileID: 1608735736}
+  m_Layer: 0
+  m_Name: BushManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1608735736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608735735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6b6f08475b961419c079fba42084f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bushPrefab: {fileID: 2950312275332248484, guid: 2833eab43f5efd84e89993a9bff86c25, type: 3}
+  bushConfig: {fileID: 11400000, guid: 9109cd5d64ae95245b33ceae9e31b5c1, type: 2}
+--- !u!4 &1608735737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608735735}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.36520883, y: 0.88218814, z: -0.0696787}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1710224558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,3 +1639,4 @@ SceneRoots:
   - {fileID: 747270687}
   - {fileID: 872774764}
   - {fileID: 1570201361}
+  - {fileID: 1608735737}
