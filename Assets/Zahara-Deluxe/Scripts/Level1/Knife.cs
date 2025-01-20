@@ -62,7 +62,7 @@ public class Knife : MonoBehaviour
         }
 
         // Realiza el corte si colisiona con un objeto cortable
-        if (other.gameObject.CompareTag("Cuttable") && !hasCut && isCutting)
+        if (other.gameObject.CompareTag("Cuttable") && !hasCut && isCutting && !isInked)
         {
             
             CutObject(other.gameObject);
