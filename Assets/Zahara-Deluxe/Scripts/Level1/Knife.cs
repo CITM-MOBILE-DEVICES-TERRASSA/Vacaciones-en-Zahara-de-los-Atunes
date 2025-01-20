@@ -19,30 +19,29 @@ public class Knife : MonoBehaviour
     private Quaternion initialRotation; // Rotación inicial del cuchillo
     ScoreL1 score;
 
+    private GameObject ink; // Imagen negra semi-transparente para simular la tinta
     private Image inkOverlay; // Imagen negra semi-transparente para simular la tinta
+
     private Color originalColor;
     Timer timer;
 
     void Start()
-    {
-        // Guarda la rotación inicial del cuchillo
-        initialRotation = transform.rotation;
-        score = GameObject.Find("ScoreManager").GetComponent<ScoreL1>();
-        timer = GameObject.Find("Canvas").GetComponent<Timer>();
+{
+    // Guarda la rotación inicial del cuchillo
+    initialRotation = transform.rotation;
+    score = GameObject.Find("ScoreManager").GetComponent<ScoreL1>();
+    timer = GameObject.Find("Canvas").GetComponent<Timer>();
 
-        // Busca el objeto InkOverlay en el Canvas
-        inkOverlay = GameObject.Find("Ink")?.GetComponent<Image>();
-        if (inkOverlay == null)
-        {
-            Debug.LogError("No se encontró InkOverlay en la escena. Asegúrate de tener un objeto llamado 'InkOverlay'.");
-            return;
-        }
+    // Busca el objeto InkOverlay en el Canvas
+    ink = GameObject.Find("Ink");
+    inkOverlay = ink.GetComponent<Image>();
 
-        // Configura el color inicial como transparente
-        originalColor = inkOverlay.color;
-        originalColor.a = 0;
-        inkOverlay.color = originalColor;
-    }
+    // Configura el color inicial como transparente
+    originalColor = inkOverlay.color;
+    originalColor.a = 0;
+    inkOverlay.color = originalColor;
+}
+
 
     void Update()
     {
@@ -127,6 +126,10 @@ public class Knife : MonoBehaviour
 
     IEnumerator ApplyInkEffect()
     {
+        // Calcula la nueva posición para el objeto "ink" en base a la posición de la cámara
+        Camera mainCamera = Camera.main;
+        Vector3 cameraPosition = mainCamera.transform.position;
+        ink.transform.position = new Vector3(cameraPosition.x, cameraPosition.y-1, cameraPosition.z+3);
         isInked = true;
 
         // Oscurece gradualmente la pantalla
