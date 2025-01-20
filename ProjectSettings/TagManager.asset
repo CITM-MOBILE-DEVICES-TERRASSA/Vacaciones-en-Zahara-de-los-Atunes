@@ -9,6 +9,10 @@ TagManager:
   - Canvas
   - Princess
   - Elephant
+  - Cinta
+  - Squid
+  - Poison
+  - Speed
   layers:
   - Default
   - TransparentFX
