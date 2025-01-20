@@ -20,7 +20,7 @@ public class BushManager : MonoBehaviour
     private void InitializeRowPositions()
     {
         SpawnManager spawnManager = FindObjectOfType<SpawnManager>();
-        if (spawnManager != null)object
+        if (spawnManager != null)
         {
             rowYPositions[0] = spawnManager.spawnPosY3 - 90f;
             rowYPositions[1] = spawnManager.spawnPosY2 - 90f;
