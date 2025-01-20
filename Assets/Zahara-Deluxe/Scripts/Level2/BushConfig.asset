@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseScale: 35
   depthScaleFactor: 0.8
-  bushSpacing: 4.2
+  bushSpacing: 4
   bushesPerRow: 13

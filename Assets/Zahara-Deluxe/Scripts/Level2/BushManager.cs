@@ -22,9 +22,9 @@ public class BushManager : MonoBehaviour
         SpawnManager spawnManager = FindObjectOfType<SpawnManager>();
         if (spawnManager != null)
         {
-            rowYPositions[0] = spawnManager.spawnPosY3 - 110f;
-            rowYPositions[1] = spawnManager.spawnPosY2 - 110f;
-            rowYPositions[2] = spawnManager.spawnPosY - 110f;
+            rowYPositions[0] = spawnManager.spawnPosY3 - 90f;
+            rowYPositions[1] = spawnManager.spawnPosY2 - 90f;
+            rowYPositions[2] = spawnManager.spawnPosY - 90f;
         }
     }
 
