@@ -8,9 +8,12 @@ public class SpawnManager : MonoBehaviour
     public GameObject PrincesaPrefab;
 
     public float spawnRangeX = 850;
-    public float spawnPosY = 40;
+    public float spawnPosY = 20;
     public float spawnPosY2 = -190;
     public float spawnPosY3 = -420;
+
+    [SerializeField] private BushConfig bushConfig;
+    private float[] rowWidths = new float[3];
 
     public int maxObjects = 15; 
     public float minDistance = 300f;
@@ -41,7 +44,25 @@ public class SpawnManager : MonoBehaviour
     {
         spawnHeights = new List<float> { spawnPosY, spawnPosY2, spawnPosY3 };
         spawnedObjects = new List<GameObject>();
+        InitializeRowWidths();
         InvokeRepeating("SpawnObject", startDelay, spawnInterval);
+    }
+
+    private void InitializeRowWidths()
+    {
+        if (bushConfig == null)
+        {
+            Debug.LogError("BushConfig no está asignado en SpawnManager!");
+            return;
+        }
+
+        float currentScale = bushConfig.baseScale;
+        for (int i = 2; i >= 0; i--)  // Comenzamos desde la fila superior
+        {
+            float totalWidth = bushConfig.bushesPerRow * bushConfig.bushSpacing * currentScale;
+            rowWidths[i] = totalWidth / 2;  // Dividimos entre 2 porque spawnRangeX es +/-
+            currentScale *= bushConfig.depthScaleFactor;
+        }
     }
 
     void SpawnObject()
@@ -124,8 +145,13 @@ public class SpawnManager : MonoBehaviour
 
     Vector3 GetRandomSpawnPosition()
     {
-        float randomX = Random.Range(-spawnRangeX, spawnRangeX);
-        float randomY = spawnHeights[Random.Range(0, spawnHeights.Count)];
+        int rowIndex = Random.Range(0, spawnHeights.Count);
+        float rowSpawnRange = rowWidths[rowIndex];
+        
+        // Usamos el ancho específico de la fila para el spawn
+        float randomX = Random.Range(-rowSpawnRange, rowSpawnRange);
+        float randomY = spawnHeights[rowIndex];
+        
         return new Vector3(randomX, randomY, 0);
     }
 
