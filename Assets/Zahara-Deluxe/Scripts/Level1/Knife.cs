@@ -71,7 +71,6 @@ public class Knife : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Cinta") && !hasCut && isCutting)
         {
-            
             hasCut = true;
         }
     }
@@ -90,34 +89,37 @@ public class Knife : MonoBehaviour
 
     private System.Collections.IEnumerator PerformCut()
     {
-        KnifeCut.Play();
-        isCutting = true;
+        if(!isInked){
+            KnifeCut.Play();
+            isCutting = true;
 
-        // Rotación hacia abajo (corte)
-        Quaternion targetRotation = Quaternion.Euler(transform.eulerAngles.x - cutAngle, transform.eulerAngles.y, transform.eulerAngles.z);
-        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, cutSpeed * Time.deltaTime);
-            yield return null;
+            // Rotación hacia abajo (corte)
+            Quaternion targetRotation = Quaternion.Euler(transform.eulerAngles.x - cutAngle, transform.eulerAngles.y, transform.eulerAngles.z);
+            while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, cutSpeed * Time.deltaTime);
+                yield return null;
+            }
+            // Asegúrate de llegar exactamente al ángulo deseado
+            transform.rotation = targetRotation;
+
+            // Espera un breve momento en la posición de corte
+            yield return new WaitForSeconds(0.1f);
+
+            // Rotación de vuelta a la posición inicial
+            while (Quaternion.Angle(transform.rotation, initialRotation) > 0.1f)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, cutSpeed * Time.deltaTime);
+                yield return null;
+            }
+
+            // Asegúrate de llegar exactamente a la posición inicial
+            transform.rotation = initialRotation;
+
+            isCutting = false;
+            hasCut = false;
         }
-        // Asegúrate de llegar exactamente al ángulo deseado
-        transform.rotation = targetRotation;
-
-        // Espera un breve momento en la posición de corte
-        yield return new WaitForSeconds(0.1f);
-
-        // Rotación de vuelta a la posición inicial
-        while (Quaternion.Angle(transform.rotation, initialRotation) > 0.1f)
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, cutSpeed * Time.deltaTime);
-            yield return null;
-        }
-
-        // Asegúrate de llegar exactamente a la posición inicial
-        transform.rotation = initialRotation;
-
-        isCutting = false;
-        hasCut = false;
+        
     }
 
     IEnumerator ApplyInkEffect()
