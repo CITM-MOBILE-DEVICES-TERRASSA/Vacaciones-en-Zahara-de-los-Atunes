@@ -21,12 +21,14 @@ public class Knife : MonoBehaviour
 
     private Image inkOverlay; // Imagen negra semi-transparente para simular la tinta
     private Color originalColor;
+    Timer timer;
 
     void Start()
     {
         // Guarda la rotación inicial del cuchillo
         initialRotation = transform.rotation;
         score = GameObject.Find("ScoreManager").GetComponent<ScoreL1>();
+        timer = GameObject.Find("Canvas").GetComponent<Timer>();
 
         // Busca el objeto InkOverlay en el Canvas
         inkOverlay = GameObject.Find("Ink")?.GetComponent<Image>();
@@ -58,6 +60,7 @@ public class Knife : MonoBehaviour
         {
             FishSquash.Play();  
             StartCoroutine(ApplyInkEffect());
+            timer.timeLeft -= 10;
             Destroy(other.gameObject);
         }
 
