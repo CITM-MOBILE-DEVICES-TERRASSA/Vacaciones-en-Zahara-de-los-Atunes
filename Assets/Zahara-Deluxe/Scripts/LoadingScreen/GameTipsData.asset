@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTips:
   - "\xA1No cortes a lo loco! Esto es C\xE1diz, no una pelea de navajas."
-  - "Si cortas el pez justo en la l\xEDnea, te llevas m\xE1s puntos... y un aplauso
-    imaginario."
+  - Cuidado con los peces apestosos, son malos pal negocio illo.
   - "Si fallas demasiado, no te preocupes... igual el em\xE9rito tampoco era tan
     buen tirador."
   - "Recuerda: disparar a los familiares reales resta puntos... y quiz\xE1s alg\xFAn
@@ -23,8 +22,12 @@ MonoBehaviour:
   - "Recuerda: cortar un calamar est\xE1 tan mal visto como dejar la tortilla sin
     cebolla."
   - "\xBFSab\xEDas que manchar la pantalla con tinta de calamar no suma puntos? Ahora
-    ya lo sabes."
+    ya lo sabes, a Fregar."
   - "Recuerda: esto es un juego... \xA1No intentes esto en cacer\xEDas reales!"
   - "\xA1El rey em\xE9rito lo har\xEDa mejor! \xBFO quiz\xE1s no?"
-  - 'Un corte perfecto es como una buena tapa: breve y satisfactorio.'
+  - 'Un corte perfecto es como una buena tapa: breve y satisfactorio. Otra ronda
+    Jefe !'
   - "Evita los familiares mon\xE1rquicos... las demandas est\xE1n caras."
+  - "El Pececito dorado, te da un viaje... Jo\xE9 como corre todo."
+  - "Aqu\xED en C\xE1diz la fauna marina es muy diferente, cada pez est\xE1 cant\xFAo"
+  - El Pececito dorado, te da un viaje , Es como un RedBull para estudiar finales
