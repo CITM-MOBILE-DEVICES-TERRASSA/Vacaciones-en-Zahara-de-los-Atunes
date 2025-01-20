@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9c99b539dc1194f91b66874914f6e1, type: 3}
   m_Name: BushConfig
   m_EditorClassIdentifier: 
-  baseScale: 40
+  baseScale: 35
   depthScaleFactor: 0.8
-  bushSpacing: 3.5
-  bushesPerRow: 15
+  bushSpacing: 4.2
+  bushesPerRow: 13
