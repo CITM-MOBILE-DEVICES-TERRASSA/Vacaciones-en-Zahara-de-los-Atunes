@@ -1,47 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Menu : MonoBehaviour
+public class MenuGame2 : MonoBehaviour
 {
-    ScoreL1 score;
-    // Start is called before the first frame update
+    private Game2Manager gameManager;
+    public Button pauseButton;
+
     void Start()
     {
-        score = FindObjectOfType<ScoreL1>();
+        gameManager = Game2Manager.Instance;
         gameObject.SetActive(false);
+        if (pauseButton != null)
+        {
+            pauseButton.onClick.AddListener(Pause);
+        }
     }
+
     public void Pause()
     {
         gameObject.SetActive(true);
         Time.timeScale = 0;
+        AudioManager.Instance.PauseGameAudio();
     }
+
     public void Resume()
     {
         gameObject.SetActive(false);
         Time.timeScale = 1;
+        AudioManager.Instance.ResumeGameAudio();
     }
+
     public void Restart()
     {
         Time.timeScale = 1;
+        AudioManager.Instance.ResumeGameAudio();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameObject.SetActive(false);
-        score.score = 0;
     }
+
     public void Lobby()
     {
         gameObject.SetActive(false);
         Time.timeScale = 1;
+        AudioManager.Instance.ResumeGameAudio();
         SceneManager.LoadScene("Lobby");
-        score.score = 0;
     }
-    public void GameSelection()
+
+    void OnDisable()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("GameSelection");
-        score.score = 0;
+        AudioManager.Instance.ResumeGameAudio();
     }
 }
-

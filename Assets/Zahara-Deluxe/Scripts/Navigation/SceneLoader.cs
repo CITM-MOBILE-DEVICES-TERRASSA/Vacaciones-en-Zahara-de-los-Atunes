@@ -8,6 +8,9 @@ namespace GameCore.Navigation
     {
         [SerializeField] private LoadingData loadingData;
         private static SceneLoader instance;
+        private bool isLoading = false;
+        private LoadingData defaultLoadingData;
+        private bool isFirstLoad = true;
 
         public static SceneLoader Instance
         {
@@ -30,48 +33,87 @@ namespace GameCore.Navigation
                 Destroy(gameObject);
                 return;
             }
+
             instance = this;
             DontDestroyOnLoad(gameObject);
+            InitializeDefaultLoadingData();
 
-            // Cargar el MainMenu a través de la loading screen al inicio
-            if (SceneManager.GetActiveScene().name != SceneNames.LoadingScreen)
+            string currentScene = SceneManager.GetActiveScene().name;
+            if (currentScene != SceneNames.LoadingScreen && isFirstLoad && SceneManager.GetActiveScene().buildIndex == 0)
             {
                 LoadSceneWithLoading(SceneNames.MainMenu);
+            }
+            isFirstLoad = false;
+        }
+
+        private void InitializeDefaultLoadingData()
+        {
+            if (loadingData == null)
+            {
+                defaultLoadingData = ScriptableObject.CreateInstance<LoadingData>();
+                defaultLoadingData.minimumLoadingTime = 2f;
+                loadingData = defaultLoadingData;
             }
         }
 
         public void LoadScene(string sceneName)
         {
-            SceneManager.LoadSceneAsync(sceneName);
+            if (!isLoading)
+            {
+                SceneManager.LoadSceneAsync(sceneName);
+            }
         }
 
         public void LoadSceneWithLoading(string targetSceneName)
         {
-            StartCoroutine(LoadSceneWithLoadingRoutine(targetSceneName));
+            if (!isLoading)
+            {
+                StartCoroutine(LoadSceneWithLoadingRoutine(targetSceneName));
+            }
         }
 
         private IEnumerator LoadSceneWithLoadingRoutine(string targetSceneName)
         {
-            // Cargar la pantalla de loading
-            AsyncOperation loadingScreenOperation = SceneManager.LoadSceneAsync(SceneNames.LoadingScreen);
-            while (!loadingScreenOperation.isDone)
+            isLoading = true;
+
+            if (loadingData == null)
             {
-                yield return null;
+                InitializeDefaultLoadingData();
             }
 
-            // Esperar el tiempo mínimo de loading
-            yield return new WaitForSeconds(loadingData.minimumLoadingTime);
-
-            // Cargar la escena objetivo
-            AsyncOperation targetSceneOperation = SceneManager.LoadSceneAsync(targetSceneName);
-            targetSceneOperation.allowSceneActivation = false;
-
-            while (targetSceneOperation.progress < 0.9f)
+            try
             {
-                yield return null;
-            }
+                AsyncOperation loadingScreenOperation = SceneManager.LoadSceneAsync(SceneNames.LoadingScreen);
+                while (!loadingScreenOperation.isDone)
+                {
+                    yield return null;
+                }
 
-            targetSceneOperation.allowSceneActivation = true;
+                float elapsedTime = 0f;
+                while (elapsedTime < loadingData.minimumLoadingTime)
+                {
+                    elapsedTime += Time.deltaTime;
+                    yield return null;
+                }
+
+                AsyncOperation targetSceneOperation = SceneManager.LoadSceneAsync(targetSceneName);
+                targetSceneOperation.allowSceneActivation = false;
+
+                while (targetSceneOperation.progress < 0.9f)
+                {
+                    yield return null;
+                }
+
+                targetSceneOperation.allowSceneActivation = true;
+                while (!targetSceneOperation.isDone)
+                {
+                    yield return null;
+                }
+            }
+            finally
+            {
+                isLoading = false;
+            }
         }
 
         public void QuitGame()
@@ -79,8 +121,16 @@ namespace GameCore.Navigation
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
-                Application.Quit();
+            Application.Quit();
 #endif
+        }
+
+        private void OnDestroy()
+        {
+            if (defaultLoadingData != null)
+            {
+                Destroy(defaultLoadingData);
+            }
         }
     }
 }

@@ -16,9 +16,14 @@ public class CrosshairController : MonoBehaviour
         Cursor.visible = false;
         shootAudioSource = gameObject.AddComponent<AudioSource>();
         shootAudioSource.clip = shootSound;
+        shootAudioSource.volume = 0.4f;
         princessAudioSource = gameObject.AddComponent<AudioSource>();
         princessAudioSource.playOnAwake = false;
         mainCamera = Camera.main;
+
+        // Asegurarse de que estos AudioSource no sean afectados por el menú
+        shootAudioSource.gameObject.tag = "GameAudio";
+        princessAudioSource.gameObject.tag = "GameAudio";
     }
 
     void Update()
