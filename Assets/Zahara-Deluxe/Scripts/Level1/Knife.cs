@@ -32,7 +32,7 @@ public class Knife : MonoBehaviour
     {
         initialRotation = transform.rotation;
         score = GameObject.Find("ScoreManager").GetComponent<ScoreL1>();
-        timer = GameObject.Find("Canvas").GetComponent<Timer>();
+        timer = GameObject.Find("Overlay").GetComponent<Timer>();
 
         ink = GameObject.Find("Ink");
         inkOverlay = ink.GetComponent<Image>();

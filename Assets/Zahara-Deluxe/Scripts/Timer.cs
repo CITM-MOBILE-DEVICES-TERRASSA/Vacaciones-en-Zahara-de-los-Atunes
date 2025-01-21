@@ -1,14 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     public float timeLeft = 150f;
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI timeUpText;
+    ScoreL1 score;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+      timeUpText.gameObject.SetActive(false);
+      score = FindObjectOfType<ScoreL1>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -37,6 +42,7 @@ public class Timer : MonoBehaviour
       countdownText.text = "00:00";
       //stop game
       timeUpText.gameObject.SetActive(true);
+      score.EndGame();
       Time.timeScale = 0;
       Debug.Log("Time has run out!");
     }

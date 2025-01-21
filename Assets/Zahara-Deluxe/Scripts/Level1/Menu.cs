@@ -37,5 +37,11 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Lobby");
         score.score = 0;
     }
+    public void GameSelection()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("GameSelection");
+        score.score = 0;
+    }
 }
 
