@@ -479,6 +479,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9751ebd59d896ce438a68014e22d2cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeLeft: 150
+  countdownText: {fileID: 0}
+  timeUpText: {fileID: 0}
 --- !u!1 &541033936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2279,7 +2282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bf98380b028564684732b90edc05f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elephantsToWin: 10
+  elephantsToWin: 50
   gameTime: 120
   maxLives: 3
   scoreText: {fileID: 388578937}

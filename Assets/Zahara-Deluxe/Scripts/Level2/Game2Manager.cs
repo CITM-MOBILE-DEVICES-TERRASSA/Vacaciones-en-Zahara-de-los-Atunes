@@ -9,7 +9,7 @@ public class Game2Manager : MonoBehaviour
     public static Game2Manager Instance { get; private set; }
 
     [Header("Game Settings")]
-    public int elephantsToWin = 10;
+    public int elephantsToWin = 50;
     public float gameTime = 60f;
     public int maxLives = 3;
 
