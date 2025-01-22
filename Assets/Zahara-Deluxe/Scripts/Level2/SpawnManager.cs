@@ -52,7 +52,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (bushConfig == null)
         {
-            Debug.LogError("BushConfig no est� asignado en SpawnManager!");
+            Debug.LogError("BushConfig no est� asignado en SpawnManager!");
             return;
         }
 
@@ -81,7 +81,11 @@ public class SpawnManager : MonoBehaviour
             return;
         }
 
-        GameObject spawnedObject = Instantiate(prefabToSpawn, spawnPosition, Quaternion.Euler(90, -90, 0));
+        // Define la posición inicial más abajo de la pantalla
+        Vector3 startPosition = spawnPosition - new Vector3(0, 20, 0); // Ajusta el valor según la distancia
+
+        // Instancia el objeto en la posición inicial
+        GameObject spawnedObject = Instantiate(prefabToSpawn, startPosition, Quaternion.identity);
 
         SpriteRenderer spriteRenderer = spawnedObject.GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
@@ -97,10 +101,14 @@ public class SpawnManager : MonoBehaviour
             spriteRenderer.sortingOrder = STARTING_SORT_ORDER - (rowIndex * SORT_ORDER_LAYER_DIFFERENCE);
         }
 
+        // Mueve el objeto hacia su posición final
         spawnedObjects.Add(spawnedObject);
-        StartCoroutine(RotateToUpright(spawnedObject.transform));
+        StartCoroutine(MoveToUpright(spawnedObject.transform, startPosition, spawnPosition));
+
+        // Destruye después de un tiempo
         StartCoroutine(DestroyAfterDelay(spawnedObject));
     }
+
 
     IEnumerator DestroyAfterDelay(GameObject obj)
     {
@@ -148,28 +156,31 @@ public class SpawnManager : MonoBehaviour
         int rowIndex = Random.Range(0, spawnHeights.Count);
         float rowSpawnRange = rowWidths[rowIndex];
         
-        // Usamos el ancho espec�fico de la fila para el spawn
+        // Usamos el ancho espec�fico de la fila para el spawn
         float randomX = Random.Range(-rowSpawnRange, rowSpawnRange);
         float randomY = spawnHeights[rowIndex];
         
         return new Vector3(randomX, randomY, 0);
     }
 
-    IEnumerator RotateToUpright(Transform objTransform)
+    IEnumerator MoveToUpright(Transform objTransform, Vector3 startPosition, Vector3 endPosition)
     {
-        Quaternion startRotation = objTransform.rotation;
-        Quaternion endRotation = Quaternion.Euler(0, 0, 0);
-        float duration = .2f; 
+        float duration = .5f; // Duración del movimiento (en segundos)
         float elapsed = 0;
+
+        objTransform.position = startPosition;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            objTransform.rotation = Quaternion.Lerp(startRotation, endRotation, elapsed / duration);
+            // Interpolación suave entre la posición inicial y final
+            objTransform.position = Vector3.Lerp(startPosition, endPosition, elapsed / duration);
+
             yield return null;
         }
 
-        objTransform.rotation = endRotation; 
+        // Asegurarse de que el objeto termine exactamente en la posición final
+        objTransform.position = endPosition;
     }
 
     public void StopSpawning()
