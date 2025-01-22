@@ -87,7 +87,7 @@ public class SpawnManager : MonoBehaviour
         }
 
         // Define la posición inicial más abajo de la pantalla
-        Vector3 startPosition = spawnPosition - new Vector3(0, 20, 0); // Ajusta el valor según la distancia
+        Vector3 startPosition = spawnPosition - new Vector3(0, 30, 0); // Ajusta el valor según la distancia
 
         // Instancia el objeto en la posición inicial
         GameObject spawnedObject = Instantiate(prefabToSpawn, startPosition, Quaternion.identity);

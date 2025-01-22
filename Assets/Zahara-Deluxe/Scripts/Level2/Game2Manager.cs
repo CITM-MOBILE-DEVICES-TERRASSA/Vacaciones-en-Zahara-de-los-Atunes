@@ -117,6 +117,7 @@ public class Game2Manager : MonoBehaviour
 
         if (victory)
         {
+            GameStatusManager.Instance.hasWonGame2 = true;
             if (victoryPanel) victoryPanel.SetActive(true);
         }
         else
