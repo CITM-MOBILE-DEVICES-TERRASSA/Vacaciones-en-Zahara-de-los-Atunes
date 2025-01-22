@@ -50,6 +50,8 @@ public class Game2Manager : MonoBehaviour
 
         victoryPanel.SetActive(false);
         gameOverPanel.SetActive(false);
+
+        GameStatusManager.Instance.hasWonGame2 = false;
     }
 
     void Update()
@@ -122,6 +124,7 @@ public class Game2Manager : MonoBehaviour
         }
         else
         {
+            GameStatusManager.Instance.hasWonGame2 = false;
             gameOverPanel.SetActive(true);
         }
     }

@@ -21,6 +21,7 @@ public class ScoreL1 : MonoBehaviour
         menu = FindObjectOfType<MenuGame1>();
         victoryPanel.SetActive(false);
         gameOverPanel.SetActive(false);
+        GameStatusManager.Instance.hasWonGame1 = false;
     }
 
     // Update is called once per frame
@@ -58,6 +59,7 @@ public class ScoreL1 : MonoBehaviour
     }
     void Lose()
     {
+        GameStatusManager.Instance.hasWonGame1 = false;
         gameOverPanel.SetActive(true);
     }
 }
