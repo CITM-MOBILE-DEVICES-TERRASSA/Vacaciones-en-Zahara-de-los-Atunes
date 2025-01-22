@@ -45,7 +45,12 @@ public class SpawnManager : MonoBehaviour
         spawnHeights = new List<float> { spawnPosY, spawnPosY2, spawnPosY3 };
         spawnedObjects = new List<GameObject>();
         InitializeRowWidths();
+
+        // Iniciar spawns
         InvokeRepeating("SpawnObject", startDelay, spawnInterval);
+
+        // Iniciar el ajuste dinámico de spawn y lifetime
+        StartCoroutine(AdjustSpawnAndLifetime());
     }
 
     private void InitializeRowWidths()
@@ -107,6 +112,31 @@ public class SpawnManager : MonoBehaviour
 
         // Destruye después de un tiempo
         StartCoroutine(DestroyAfterDelay(spawnedObject));
+    }
+
+    IEnumerator AdjustSpawnAndLifetime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f); // Cada 5 segundos ajustar los valores
+
+            // Reducir el tiempo de spawn y ajustar el tiempo de vida al mismo valor
+            if (spawnInterval > 0.3f)
+            {
+                spawnInterval = Mathf.Max(0.3f, spawnInterval - 0.1f);
+                objectLifetime = spawnInterval; // Igualar el tiempo de vida al intervalo de spawn
+            }
+            else
+            {
+                Debug.Log("SpawnInterval y ObjectLifetime alcanzaron el límite mínimo.");
+            }
+
+            // Actualizar el intervalo de Invocar para reflejar el nuevo spawnInterval
+            CancelInvoke("SpawnObject");
+            InvokeRepeating("SpawnObject", spawnInterval, spawnInterval);
+
+            Debug.Log($"SpawnInterval y ObjectLifetime sincronizados: {spawnInterval}");
+        }
     }
 
 
