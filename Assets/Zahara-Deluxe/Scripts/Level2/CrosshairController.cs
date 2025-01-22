@@ -72,6 +72,7 @@ public class CrosshairController : MonoBehaviour
                     Debug.Log("¡Princesa golpeada!");
                     PlayPrincessHitSound();
                     Game2Manager.Instance.UpdateScore(-10);
+                    Game2Manager.Instance.OnPrincessHit();
                     Destroy(hitCollider.gameObject);
                     break;
                 }

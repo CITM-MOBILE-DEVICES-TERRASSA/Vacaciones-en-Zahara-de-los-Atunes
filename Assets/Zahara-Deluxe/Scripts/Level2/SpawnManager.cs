@@ -171,4 +171,9 @@ public class SpawnManager : MonoBehaviour
 
         objTransform.rotation = endRotation; 
     }
+
+    public void StopSpawning()
+    {
+        CancelInvoke("SpawnObject");
+    }
 }
