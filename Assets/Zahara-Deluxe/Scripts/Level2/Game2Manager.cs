@@ -119,10 +119,12 @@ public class Game2Manager : MonoBehaviour
         {
             GameStatusManager.Instance.hasWonGame2 = true;
             if (victoryPanel) victoryPanel.SetActive(true);
+            Time.timeScale = 0;
         }
         else
         {
             if (gameOverPanel) gameOverPanel.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
@@ -140,16 +142,19 @@ public class Game2Manager : MonoBehaviour
 
     public void ReturnToLobby()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Lobby"); 
     }
 
     public void GoToFridge()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Collectibles"); 
     }
 
     public void RestartGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

@@ -16,29 +16,35 @@ public class MenuGame1 : MonoBehaviour
     {
         gameObject.SetActive(true);
         timer.isPaused = true;
+        Time.timeScale = 0;
     }
     public void Resume()
     {
         timer.isPaused = false;
         gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
     public void Restart()
     {
         timer.isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
     public void Lobby()
     {
+        Time.timeScale = 1;
         gameObject.SetActive(false);
         SceneManager.LoadScene("Lobby");
     }
     public void GameSelection()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("GameSelection");
     }
     public void FridgeScene()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Collectibles");
     }
 }

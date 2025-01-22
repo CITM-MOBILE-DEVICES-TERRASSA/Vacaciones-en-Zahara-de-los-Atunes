@@ -52,9 +52,11 @@ public class ScoreL1 : MonoBehaviour
     void Won()
     {
         victoryPanel.SetActive(true);
+        Time.timeScale = 0;
     }
     void Lose()
     {
         gameOverPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 }
