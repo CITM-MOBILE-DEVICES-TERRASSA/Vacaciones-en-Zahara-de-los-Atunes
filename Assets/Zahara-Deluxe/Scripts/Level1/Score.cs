@@ -19,6 +19,8 @@ public class ScoreL1 : MonoBehaviour
         maxScore = PlayerPrefs.GetInt("maxScore", maxScore);
         score = 0;
         menu = FindObjectOfType<MenuGame1>();
+        victoryPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -51,6 +53,7 @@ public class ScoreL1 : MonoBehaviour
     }
     void Won()
     {
+        GameStatusManager.Instance.hasWonGame1 = true;
         victoryPanel.SetActive(true);
     }
     void Lose()

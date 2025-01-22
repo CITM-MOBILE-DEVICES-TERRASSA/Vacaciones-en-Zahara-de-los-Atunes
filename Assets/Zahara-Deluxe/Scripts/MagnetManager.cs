@@ -10,9 +10,6 @@ public class MagnetManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log($"GameStatusManager.Instance.hasWonGame1: {GameStatusManager.Instance.hasWonGame1}");
-        Debug.Log($"GameStatusManager.Instance.hasWonGame2: {GameStatusManager.Instance.hasWonGame2}");
-
         if (GameStatusManager.Instance.hasWonGame1)
         {
             magnetGame1Prefab.SetActive(true); 

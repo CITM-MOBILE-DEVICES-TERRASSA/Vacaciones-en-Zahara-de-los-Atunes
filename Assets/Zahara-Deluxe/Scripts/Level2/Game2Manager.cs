@@ -48,8 +48,8 @@ public class Game2Manager : MonoBehaviour
         currentTime = gameTime;
         UpdateUI();
 
-        if (victoryPanel) victoryPanel.SetActive(false);
-        if (gameOverPanel) gameOverPanel.SetActive(false);
+        victoryPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
     }
 
     void Update()
@@ -118,11 +118,11 @@ public class Game2Manager : MonoBehaviour
         if (victory)
         {
             GameStatusManager.Instance.hasWonGame2 = true;
-            if (victoryPanel) victoryPanel.SetActive(true);
+            victoryPanel.SetActive(true);
         }
         else
         {
-            if (gameOverPanel) gameOverPanel.SetActive(true);
+            gameOverPanel.SetActive(true);
         }
     }
 
