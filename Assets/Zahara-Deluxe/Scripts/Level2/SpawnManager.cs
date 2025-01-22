@@ -121,9 +121,9 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(5f); // Cada 5 segundos ajustar los valores
 
             // Reducir el tiempo de spawn y ajustar el tiempo de vida al mismo valor
-            if (spawnInterval > 0.3f)
+            if (spawnInterval > 0.5f)
             {
-                spawnInterval = Mathf.Max(0.3f, spawnInterval - 0.1f);
+                spawnInterval = Mathf.Max(0.5f, spawnInterval - 0.05f);
                 objectLifetime = spawnInterval; // Igualar el tiempo de vida al intervalo de spawn
             }
             else
@@ -138,7 +138,6 @@ public class SpawnManager : MonoBehaviour
             Debug.Log($"SpawnInterval y ObjectLifetime sincronizados: {spawnInterval}");
         }
     }
-
 
     IEnumerator DestroyAfterDelay(GameObject obj)
     {
