@@ -9,7 +9,8 @@ public class ScoreL1 : MonoBehaviour
     public int maxScore;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI maxScoreText;
-    public TextMeshProUGUI WonText;
+    public GameObject victoryPanel;
+    public GameObject gameOverPanel;
     MenuGame1 menu;
     
     // Start is called before the first frame update
@@ -41,23 +42,19 @@ public class ScoreL1 : MonoBehaviour
     {
         if(score >= 40)
         {
-            StartCoroutine(Won());
+            Won();
         }
         else
         {
-            StartCoroutine(Reset());
+            Lose();
         }
     }
-    IEnumerator Won()
+    void Won()
     {
-        WonText.gameObject.SetActive(true);
-        WonText.text = "You Won! \n Score: " + score.ToString();
-        yield return new WaitForSecondsRealtime(3);
-        menu.GameSelection();
+        victoryPanel.SetActive(true);
     }
-    IEnumerator Reset()
+    void Lose()
     {
-        yield return new WaitForSecondsRealtime(3);
-        menu.Restart();
+        gameOverPanel.SetActive(true);
     }
 }

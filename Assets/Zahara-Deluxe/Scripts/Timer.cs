@@ -5,29 +5,32 @@ public class Timer : MonoBehaviour
 {
     public float timeLeft = 150f;
     public TextMeshProUGUI countdownText;
-    public TextMeshProUGUI timeUpText;
     ScoreL1 score;
-
+    public bool isPaused = false;
     // Start is called before the first frame update
     void Start()
     {
-      timeUpText.gameObject.SetActive(false);
       score = FindObjectOfType<ScoreL1>();
     }
 
     // Update is called once per frame
     void Update()
     {
-      if  (timeLeft > 0)
-      {
-        timeLeft -= Time.deltaTime;
-        UpdateTimerDisplay();
-      }
+      if(isPaused) return; 
       else
-      {
-        timeLeft = 0;
-        TimerEnded();
+      {    
+        if  (timeLeft > 0)
+        {
+          timeLeft -= Time.deltaTime;
+          UpdateTimerDisplay();
+        }
+        else
+        {
+          timeLeft = 0;
+          TimerEnded();
+        }
       }
+ 
     }
 
     void UpdateTimerDisplay()
@@ -39,11 +42,10 @@ public class Timer : MonoBehaviour
 
     void TimerEnded()
     {
+      if(isPaused) return;
+      isPaused = true;
       countdownText.text = "00:00";
-      //stop game
-      timeUpText.gameObject.SetActive(true);
       score.EndGame();
-      Time.timeScale = 0;
       Debug.Log("Time has run out!");
     }
 }
