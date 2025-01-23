@@ -1,5 +1,6 @@
     using System.Collections.Generic;
-    using UnityEngine;
+using UnityEditor.Overlays;
+using UnityEngine;
 
 
     [System.Serializable]
@@ -11,17 +12,19 @@
 
     public class SpawnFish : MonoBehaviour
     {
-        public Timer Tiempo;
-        public GameObject CartaPescao;
+        private Timer Tiempo;
+        private GameObject CartaPescao;
         public List<SpawnablePrefab> spawnablePrefabs; // Lista de prefabs configurables en el inspector
         public Vector2 cooldownRange = new Vector2(1f, 5f); // Rango de cooldown (mínimo y máximo)
         public Transform spawnPoint; // Punto donde se spawnearán los objetos
 
         private float timer; // Temporizador interno
         private float currentCooldown; // Cooldown actual
-        private bool carta=false;
+        private bool carta = false;
         void Start()
         {
+            Tiempo = GameObject.Find("Overlay").GetComponent<Timer>();
+            CartaPescao = GameObject.Find("CartaPescaos");
             Tiempo.isPaused = true;
             CartaPescao.SetActive(true);    
             carta = true;

@@ -11,14 +11,12 @@ public class ScoreL1 : MonoBehaviour
     public TextMeshProUGUI maxScoreText;
     public GameObject victoryPanel;
     public GameObject gameOverPanel;
-    MenuGame1 menu;
     
     // Start is called before the first frame update
     void Start()
     {
         maxScore = PlayerPrefs.GetInt("maxScore", maxScore);
         score = 0;
-        menu = FindObjectOfType<MenuGame1>();
         victoryPanel.SetActive(false);
         gameOverPanel.SetActive(false);
         GameStatusManager.Instance.hasWonGame1 = false;
