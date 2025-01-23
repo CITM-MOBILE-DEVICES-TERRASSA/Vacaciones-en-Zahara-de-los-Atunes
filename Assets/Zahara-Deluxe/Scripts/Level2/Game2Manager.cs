@@ -133,7 +133,7 @@ public class Game2Manager : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (scoreText) scoreText.text = $"Puntuaje: {score}";
+        if (scoreText) scoreText.text = $"Puntos: {score}";
         if (timerText)
         {
             int minutes = Mathf.FloorToInt(currentTime / 60);

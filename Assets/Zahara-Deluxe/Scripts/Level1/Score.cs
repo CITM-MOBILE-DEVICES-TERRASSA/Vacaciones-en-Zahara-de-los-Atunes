@@ -27,8 +27,8 @@ public class ScoreL1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Puntuaje: " + score.ToString();
-        maxScoreText.text = "Max puntuaje: " + maxScore.ToString();
+        scoreText.text = "Puntos: " + score.ToString();
+        maxScoreText.text = "Max Puntos: " + maxScore.ToString();
 
         if (score > maxScore)
         {
