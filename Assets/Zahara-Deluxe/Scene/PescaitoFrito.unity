@@ -828,6 +828,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469231727}
   m_CullTransparentMesh: 1
+--- !u!1 &475577298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475577299}
+  - component: {fileID: 475577301}
+  - component: {fileID: 475577300}
+  m_Layer: 5
+  m_Name: Carta Pescaos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &475577299
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475577298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 104.13967}
+  m_LocalScale: {x: 10.074273, y: 10.074273, z: 10.074273}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 890273296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 74, y: -2}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &475577300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475577298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9bb3876f9ee15a8469bc9892422bd55b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &475577301
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475577298}
+  m_CullTransparentMesh: 1
 --- !u!1 &482097774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,6 +1962,7 @@ RectTransform:
   - {fileID: 1032028169}
   - {fileID: 1094305541}
   - {fileID: 834455712}
+  - {fileID: 475577299}
   - {fileID: 1141260600}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1967,7 +2043,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Puntuaje: \n"
+  m_text: "Puntos: \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d8283e9a3150704daef5d63dadbed7e, type: 2}
   m_sharedMaterial: {fileID: -7191163622888008962, guid: 5d8283e9a3150704daef5d63dadbed7e, type: 2}
@@ -2082,7 +2158,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Max puntuaje: \n"
+  m_text: "Max Puntos: \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d8283e9a3150704daef5d63dadbed7e, type: 2}
   m_sharedMaterial: {fileID: -7191163622888008962, guid: 5d8283e9a3150704daef5d63dadbed7e, type: 2}
@@ -2745,6 +2821,14 @@ PrefabInstance:
       propertyPath: Limit
       value: 
       objectReference: {fileID: 1332246161}
+    - target: {fileID: 421004805616267909, guid: d2b7fca2af1d0374095f89b31adbf18f, type: 3}
+      propertyPath: Tiempo
+      value: 
+      objectReference: {fileID: 890273297}
+    - target: {fileID: 421004805616267909, guid: d2b7fca2af1d0374095f89b31adbf18f, type: 3}
+      propertyPath: CartaPescao
+      value: 
+      objectReference: {fileID: 475577298}
     - target: {fileID: 421004805616267909, guid: d2b7fca2af1d0374095f89b31adbf18f, type: 3}
       propertyPath: cooldownRange.x
       value: 1
@@ -4487,6 +4571,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1332246161}
     - target: {fileID: 421004805616267909, guid: d2b7fca2af1d0374095f89b31adbf18f, type: 3}
+      propertyPath: Tiempo
+      value: 
+      objectReference: {fileID: 890273297}
+    - target: {fileID: 421004805616267909, guid: d2b7fca2af1d0374095f89b31adbf18f, type: 3}
+      propertyPath: CartaPescao
+      value: 
+      objectReference: {fileID: 475577298}
+    - target: {fileID: 421004805616267909, guid: d2b7fca2af1d0374095f89b31adbf18f, type: 3}
       propertyPath: cooldownRange.x
       value: 1
       objectReference: {fileID: 0}
@@ -4591,6 +4683,14 @@ PrefabInstance:
       propertyPath: Limit
       value: 
       objectReference: {fileID: 1332246161}
+    - target: {fileID: 421004805616267909, guid: d2b7fca2af1d0374095f89b31adbf18f, type: 3}
+      propertyPath: Tiempo
+      value: 
+      objectReference: {fileID: 890273297}
+    - target: {fileID: 421004805616267909, guid: d2b7fca2af1d0374095f89b31adbf18f, type: 3}
+      propertyPath: CartaPescao
+      value: 
+      objectReference: {fileID: 475577298}
     - target: {fileID: 421004805616267909, guid: d2b7fca2af1d0374095f89b31adbf18f, type: 3}
       propertyPath: cooldownRange.x
       value: 1
