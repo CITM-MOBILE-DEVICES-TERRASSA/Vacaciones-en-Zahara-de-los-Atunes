@@ -214,7 +214,7 @@ public class PlataformaController : MonoBehaviour
             if (currentPlatform > 0 && ballY >= platformBaseY + 0.2f && ballY <= platformBaseY + 0.6f && !visitedPlatforms.Contains((int)currentPlatform))
             {
                 visitedPlatforms.Add((int)currentPlatform);
-                Score.Instance.AddScore(20);
+                Score_FelixJump.Instance.AddScore(20);
                 Debug.Log("Score: + 20");
             }
         }

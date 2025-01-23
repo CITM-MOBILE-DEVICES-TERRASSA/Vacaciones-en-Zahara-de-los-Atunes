@@ -50,7 +50,7 @@ public class GameplayManager : MonoBehaviour
     public void LoadNextLevel()
     {
         // Guardamos el puntaje acumulado del nivel antes de cambiar de escena
-        Score score = FindObjectOfType<Score>();
+        ScoreJumping score = FindObjectOfType<ScoreJumping>();
         if (score != null)
         {
             score.AddScoreToTotal();  // Añadimos la puntuación del nivel al total

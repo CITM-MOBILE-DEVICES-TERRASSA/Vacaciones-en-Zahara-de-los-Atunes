@@ -12,12 +12,12 @@ public class HandleVictory : MonoBehaviour
     GameObject nextLevelButton;
 
     // Referencia al script Score
-    private Score scoreScript;
+    private ScoreJumping scoreScript;
 
     private void Start()
     {
         // Obtén la referencia al script Score
-        scoreScript = FindObjectOfType<Score>();
+        scoreScript = FindObjectOfType<ScoreJumping>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

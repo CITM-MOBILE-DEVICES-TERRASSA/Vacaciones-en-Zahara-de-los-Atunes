@@ -9,7 +9,7 @@ public class CuttingScript : MonoBehaviour
     public GameObject fish;
     private Fish cutable;
     public GameObject sangre;
-    private ScoreManagerLevel scoremanagerlevel;
+    private ScoreManagerLevel_Zahara scoremanagerlevel;
     [Min(1)]public int maxScorePerCut = 200;
     // Relacion inversamente proporcional de la distancia
     [Range(0.01f,10.0f)]public float distanceFactor = 2.0f;
@@ -24,7 +24,7 @@ public class CuttingScript : MonoBehaviour
     void Start()
     {
         cutable = FindObjectOfType<Fish>(); 
-        scoremanagerlevel = FindObjectOfType<ScoreManagerLevel>();
+        scoremanagerlevel = FindObjectOfType<ScoreManagerLevel_Zahara>();
         initialRotation = transform.GetChild(0).rotation;
         audioSource = GetComponent<AudioSource>();
     }

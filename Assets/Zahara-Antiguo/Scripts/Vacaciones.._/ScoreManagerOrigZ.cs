@@ -25,7 +25,6 @@ public class ScoreManagerOrig: MonoBehaviour
     }
     #endregion
 
-
     private int score;
     private int totalScore;
 
@@ -35,6 +34,4 @@ public class ScoreManagerOrig: MonoBehaviour
     public int MaxScore2;
     public int MaxTotalLevels;
     public int MaxTotalGame;
-    
-
 }

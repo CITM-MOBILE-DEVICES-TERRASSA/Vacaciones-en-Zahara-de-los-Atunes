@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
+public class LevelManagerZaharaAntiguo : MonoBehaviour
 {
     public Button[] levelButtons;
     [SerializeField] private TMPro.TextMeshProUGUI levelText;

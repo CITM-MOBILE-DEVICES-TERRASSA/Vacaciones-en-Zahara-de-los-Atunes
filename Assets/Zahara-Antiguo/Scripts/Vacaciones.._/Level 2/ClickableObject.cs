@@ -11,12 +11,12 @@ public class ClickableObject : MonoBehaviour
     private int pedroSanchezPoints = 500;
     private int reinaSofiaPoints = -1000;
 
-    private ScoreManagerLevel scoreManager;
+    private ScoreManagerLevel_Zahara scoreManager;
     private SettingsButton settings;
     private TimeOut endGame;
     void Start()
     {
-        scoreManager = FindObjectOfType<ScoreManagerLevel>();
+        scoreManager = FindObjectOfType<ScoreManagerLevel_Zahara>();
 
         if (scoreManager == null)
         {

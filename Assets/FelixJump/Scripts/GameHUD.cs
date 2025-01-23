@@ -25,8 +25,8 @@ public class GameHUD : MonoBehaviour
     private void UpdateScoreTexts()
     {
         string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        scoreText.text = Score.Instance.GetScore(currentScene).ToString();
-        highScoreText.text = Score.Instance.GetHighScore(currentScene).ToString();
+        scoreText.text = Score_FelixJump.Instance.GetScore(currentScene).ToString();
+        highScoreText.text = Score_FelixJump.Instance.GetHighScore(currentScene).ToString();
     }
 
     public void ChangeToMenu()

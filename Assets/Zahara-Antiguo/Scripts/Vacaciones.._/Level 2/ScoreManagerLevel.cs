@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ScoreManagerLevel : MonoBehaviour
+public class ScoreManagerLevel_Zahara : MonoBehaviour
 {
     
     public TextMeshProUGUI scoreText; 

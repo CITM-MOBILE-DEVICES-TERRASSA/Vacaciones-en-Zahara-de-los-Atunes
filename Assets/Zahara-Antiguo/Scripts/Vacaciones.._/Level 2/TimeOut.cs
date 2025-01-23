@@ -10,13 +10,13 @@ public class TimeOut : MonoBehaviour
     public TextMeshProUGUI endScoreText;
     private float timer = 150f;
 
-    private ScoreManagerLevel scoreManagerLevel;
+    private ScoreManagerLevel_Zahara scoreManagerLevel;
     // Start is called before the first frame update
     void Start()
     {
         endGameCanvas.gameObject.SetActive(false);
 
-        scoreManagerLevel = FindObjectOfType<ScoreManagerLevel>();
+        scoreManagerLevel = FindObjectOfType<ScoreManagerLevel_Zahara>();
 
         Invoke("ShowEndGameCanvas", timer);
     }

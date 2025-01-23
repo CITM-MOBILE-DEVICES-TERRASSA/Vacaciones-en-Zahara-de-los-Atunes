@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class Score : MonoBehaviour
+public class ScoreJumping : MonoBehaviour
 {
     [SerializeField] private string scoreTextObjectName = "Score"; // Nombre del objeto de texto del marcador
     private TextMeshProUGUI scoreText; // Referencia al marcador

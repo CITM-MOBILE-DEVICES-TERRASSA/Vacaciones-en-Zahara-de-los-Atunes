@@ -12,9 +12,13 @@ namespace GameCore.Navigation
         }
         public void OnMinigame3Button()
         {
-            NavigateToScene(SceneNames.FelixJump);
+            NavigateToScene(SceneNames.ColorsMagic);
         }
         public void OnMinigame4Button()
+        {
+            NavigateToScene(SceneNames.FelixJump);
+        }
+        public void OnMinigame5Button()
         {
             NavigateToScene(SceneNames.Fiki);
         }
