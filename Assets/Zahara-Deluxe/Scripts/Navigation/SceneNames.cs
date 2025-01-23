@@ -9,5 +9,7 @@ namespace GameCore.Navigation
         public const string GameSelection = "GameSelection";
         public const string PescaitoFrito = "PescaitoFrito";
         public const string Game2 = "Game2";
+        public const string JumpingJack = "Meta1";
+
     }
 }

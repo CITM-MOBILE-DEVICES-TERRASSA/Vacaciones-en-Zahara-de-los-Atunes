@@ -11,5 +11,10 @@ namespace GameCore.Navigation
         {
             SceneLoader.Instance.LoadSceneWithLoading(SceneNames.Game2);
         }
+
+        public void OnJumpingButton()
+        {
+            SceneLoader.Instance.LoadSceneWithLoading(SceneNames.JumpingJack);
+        }
     }
 }

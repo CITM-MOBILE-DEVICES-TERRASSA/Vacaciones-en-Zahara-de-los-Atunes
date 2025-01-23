@@ -6,5 +6,10 @@ namespace GameCore.Navigation
         {
             NavigateToScene(SceneNames.GameSelection);
         }
+
+        public void OnMinigame2Button()
+        {
+            NavigateToScene(SceneNames.JumpingJack);
+        }
     }
 }
