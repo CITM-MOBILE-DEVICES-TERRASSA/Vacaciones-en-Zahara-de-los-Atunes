@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 682, y: -13}
+  m_AnchoredPosition: {x: 618, y: -39}
   m_SizeDelta: {x: 411.0408, y: 55.5134}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &56824723
@@ -236,7 +236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 82, y: -262}
+  m_AnchoredPosition: {x: -17, y: -268}
   m_SizeDelta: {x: 198.6801, y: 199.4286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &211386585
@@ -368,7 +368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 682, y: 140}
+  m_AnchoredPosition: {x: 618, y: 140}
   m_SizeDelta: {x: 198.6801, y: 199.4286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &404477786
@@ -594,7 +594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 684, y: -262}
+  m_AnchoredPosition: {x: 618, y: -262}
   m_SizeDelta: {x: 198.6801, y: 199.4286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &432528740
@@ -673,8 +673,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b88c0bc7c9c2eba4787f53092d789803, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -725,7 +725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: -13}
+  m_AnchoredPosition: {x: -17, y: -45}
   m_SizeDelta: {x: 411.0408, y: 55.5134}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &486696655
@@ -804,7 +804,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 684, y: -415}
+  m_AnchoredPosition: {x: 618, y: -439}
   m_SizeDelta: {x: 411.0408, y: 55.5134}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &577401433
@@ -1180,7 +1180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 82, y: -415}
+  m_AnchoredPosition: {x: -17, y: -445}
   m_SizeDelta: {x: 411.0408, y: 55.5134}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &856217151
@@ -1259,8 +1259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -621, y: -151.71399}
-  m_SizeDelta: {x: 411.0408, y: 126.3362}
+  m_AnchoredPosition: {x: -618, y: -239}
+  m_SizeDelta: {x: 444.5048, y: 126.3362}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &866156392
 MonoBehaviour:
@@ -1295,7 +1295,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Vacaciones en Zahara de los Atunes
+  m_Text: Vacaciones en Zahara de los Atunes Deluxe
 --- !u!222 &866156393
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1339,7 +1339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: 140}
+  m_AnchoredPosition: {x: -17, y: 134}
   m_SizeDelta: {x: 198.6801, y: 199.4286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1293076011
@@ -1471,7 +1471,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -621, y: 68}
+  m_AnchoredPosition: {x: -618, y: -24.58899}
   m_SizeDelta: {x: 198.6801, y: 199.4286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1587897126
