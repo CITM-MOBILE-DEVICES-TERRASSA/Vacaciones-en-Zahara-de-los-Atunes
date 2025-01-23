@@ -21,20 +21,17 @@ public class MenuGame2 : MonoBehaviour
     {
         gameObject.SetActive(true);
         Time.timeScale = 0;
-        AudioManager.Instance.PauseGameAudio();
     }
 
     public void Resume()
     {
         gameObject.SetActive(false);
         Time.timeScale = 1;
-        AudioManager.Instance.ResumeGameAudio();
     }
 
     public void Restart()
     {
         Time.timeScale = 1;
-        AudioManager.Instance.ResumeGameAudio();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameObject.SetActive(false);
     }
@@ -43,13 +40,11 @@ public class MenuGame2 : MonoBehaviour
     {
         gameObject.SetActive(false);
         Time.timeScale = 1;
-        AudioManager.Instance.ResumeGameAudio();
         SceneManager.LoadScene("Lobby");
     }
 
     void OnDisable()
     {
         Time.timeScale = 1;
-        AudioManager.Instance.ResumeGameAudio();
     }
 }
