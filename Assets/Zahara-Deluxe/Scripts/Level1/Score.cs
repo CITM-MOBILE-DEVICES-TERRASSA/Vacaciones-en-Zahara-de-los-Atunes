@@ -12,10 +12,8 @@ public class ScoreL1 : MonoBehaviour
     public GameObject victoryPanel;
     public GameObject gameOverPanel;
     
-    // Start is called before the first frame update
     void Start()
     {
-        //dont destroy on load
         maxScore = PlayerPrefs.GetInt("maxScore", maxScore);
         scoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
         maxScoreText = GameObject.Find("MaxScore").GetComponent<TextMeshProUGUI>();
@@ -25,7 +23,6 @@ public class ScoreL1 : MonoBehaviour
         GameStatusManager.Instance.hasWonGame1 = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         scoreText.text = "Puntos: " + score.ToString();

@@ -7,7 +7,7 @@ namespace GameCore.Navigation
     public class BackNavigationController : MonoBehaviour
     {
         [Header("UI References")]
-        [SerializeField] private Button backButton;  // Este campo aparecerá en el Inspector
+        [SerializeField] private Button backButton;
 
         private ISceneLoader sceneLoader;
         private string currentScene;
@@ -15,7 +15,6 @@ namespace GameCore.Navigation
 
         private void Start()
         {
-            // Obtener la referencia al SceneLoader
             sceneLoader = SceneLoader.Instance;
 
             if (backButton == null)

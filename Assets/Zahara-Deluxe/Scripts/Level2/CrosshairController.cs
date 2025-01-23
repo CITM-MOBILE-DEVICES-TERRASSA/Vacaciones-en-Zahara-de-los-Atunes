@@ -14,16 +14,20 @@ public class CrosshairController : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
-        shootAudioSource = gameObject.AddComponent<AudioSource>();
-        shootAudioSource.clip = shootSound;
-        shootAudioSource.volume = 0.4f;
-        princessAudioSource = gameObject.AddComponent<AudioSource>();
-        princessAudioSource.playOnAwake = false;
         mainCamera = Camera.main;
 
-        // Asegurarse de que estos AudioSource no sean afectados por el menú
-        shootAudioSource.gameObject.tag = "GameAudio";
-        princessAudioSource.gameObject.tag = "GameAudio";
+        if (shootSound != null)
+        {
+            shootAudioSource = gameObject.AddComponent<AudioSource>();
+            shootAudioSource.clip = shootSound;
+            shootAudioSource.volume = 0.4f;
+        }
+
+        if (princessHitSound != null)
+        {
+            princessAudioSource = gameObject.AddComponent<AudioSource>();
+            princessAudioSource.playOnAwake = false;
+        }
     }
 
     void Update()
@@ -41,17 +45,22 @@ public class CrosshairController : MonoBehaviour
 
     void Shoot()
     {
-        PlayShootSound();
+        if (Game2Manager.Instance == null)
+        {
+            Debug.LogWarning("Game2Manager no está inicializado");
+            return;
+        }
 
+        PlayShootSound();
         Vector2 shootPosition = transform.position;
-        float detectionRadius = 1f; 
+        float detectionRadius = 1f;
 
         Debug.Log($"Disparando en posición real: {shootPosition}");
-
         Debug.DrawLine(shootPosition, shootPosition + Vector2.up * 0.5f, Color.red, 1f);
         Debug.DrawLine(shootPosition, shootPosition + Vector2.right * 0.5f, Color.red, 1f);
 
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(shootPosition, detectionRadius);
+
         Debug.Log($"Objetos detectados: {hitColliders.Length}");
 
         foreach (Collider2D hitCollider in hitColliders)

@@ -25,7 +25,6 @@ public class Knife : MonoBehaviour
     private Color originalColor;
     Timer timer;
 
-    // Referencia al objeto que controla la velocidad del juego
     private float originalTimeScale;
 
     void Start()
@@ -64,7 +63,7 @@ public class Knife : MonoBehaviour
         else if (other.gameObject.CompareTag("Poison"))
         {
             FishSquash.Play();
-            score.updateScore(-2); // Resta un punto
+            score.updateScore(-2);
             Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("Speed") && !isSpeedBoosted)
@@ -87,16 +86,12 @@ public class Knife : MonoBehaviour
 
     IEnumerator ApplySpeedBoost()
     {
-        // Evitar que se active múltiples veces
         isSpeedBoosted = true;
 
-        // Duplicar la velocidad del juego
         Time.timeScale = originalTimeScale * 2f;
 
-        // Esperar 5 segundos
         yield return new WaitForSeconds(5f);
 
-        // Restaurar la velocidad normal
         Time.timeScale = originalTimeScale;
 
         isSpeedBoosted = false;

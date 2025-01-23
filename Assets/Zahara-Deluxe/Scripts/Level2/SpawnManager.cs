@@ -46,10 +46,8 @@ public class SpawnManager : MonoBehaviour
         spawnedObjects = new List<GameObject>();
         InitializeRowWidths();
 
-        // Iniciar spawns
         InvokeRepeating("SpawnObject", startDelay, spawnInterval);
 
-        // Iniciar el ajuste dinámico de spawn y lifetime
         StartCoroutine(AdjustSpawnAndLifetime());
     }
 
@@ -62,10 +60,10 @@ public class SpawnManager : MonoBehaviour
         }
 
         float currentScale = bushConfig.baseScale;
-        for (int i = 2; i >= 0; i--)  // Comenzamos desde la fila superior
+        for (int i = 2; i >= 0; i--) 
         {
             float totalWidth = bushConfig.bushesPerRow * bushConfig.bushSpacing * currentScale;
-            rowWidths[i] = totalWidth / 2;  // Dividimos entre 2 porque spawnRangeX es +/-
+            rowWidths[i] = totalWidth / 2;
             currentScale *= bushConfig.depthScaleFactor;
         }
     }
@@ -86,10 +84,8 @@ public class SpawnManager : MonoBehaviour
             return;
         }
 
-        // Define la posición inicial más abajo de la pantalla
-        Vector3 startPosition = spawnPosition - new Vector3(0, 30, 0); // Ajusta el valor según la distancia
+        Vector3 startPosition = spawnPosition - new Vector3(0, 30, 0);
 
-        // Instancia el objeto en la posición inicial
         GameObject spawnedObject = Instantiate(prefabToSpawn, startPosition, Quaternion.identity);
 
         SpriteRenderer spriteRenderer = spawnedObject.GetComponent<SpriteRenderer>();
@@ -106,11 +102,9 @@ public class SpawnManager : MonoBehaviour
             spriteRenderer.sortingOrder = STARTING_SORT_ORDER - (rowIndex * SORT_ORDER_LAYER_DIFFERENCE);
         }
 
-        // Mueve el objeto hacia su posición final
         spawnedObjects.Add(spawnedObject);
         StartCoroutine(MoveToUpright(spawnedObject.transform, startPosition, spawnPosition));
 
-        // Destruye después de un tiempo
         StartCoroutine(DestroyAfterDelay(spawnedObject));
     }
 
@@ -118,20 +112,18 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f); // Cada 5 segundos ajustar los valores
+            yield return new WaitForSeconds(5f);
 
-            // Reducir el tiempo de spawn y ajustar el tiempo de vida al mismo valor
             if (spawnInterval > 0.5f)
             {
                 spawnInterval = Mathf.Max(0.5f, spawnInterval - 0.05f);
-                objectLifetime = spawnInterval; // Igualar el tiempo de vida al intervalo de spawn
+                objectLifetime = spawnInterval;
             }
             else
             {
                 Debug.Log("SpawnInterval y ObjectLifetime alcanzaron el límite mínimo.");
             }
 
-            // Actualizar el intervalo de Invocar para reflejar el nuevo spawnInterval
             CancelInvoke("SpawnObject");
             InvokeRepeating("SpawnObject", spawnInterval, spawnInterval);
 
@@ -185,7 +177,6 @@ public class SpawnManager : MonoBehaviour
         int rowIndex = Random.Range(0, spawnHeights.Count);
         float rowSpawnRange = rowWidths[rowIndex];
         
-        // Usamos el ancho espec�fico de la fila para el spawn
         float randomX = Random.Range(-rowSpawnRange, rowSpawnRange);
         float randomY = spawnHeights[rowIndex];
         
@@ -194,22 +185,27 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator MoveToUpright(Transform objTransform, Vector3 startPosition, Vector3 endPosition)
     {
-        float duration = .5f; // Duración del movimiento (en segundos)
+        float duration = .5f;
         float elapsed = 0;
+
+        if (objTransform == null) yield break;
 
         objTransform.position = startPosition;
 
         while (elapsed < duration)
         {
+            if (objTransform == null) yield break;
+
             elapsed += Time.deltaTime;
-            // Interpolación suave entre la posición inicial y final
             objTransform.position = Vector3.Lerp(startPosition, endPosition, elapsed / duration);
 
             yield return null;
         }
 
-        // Asegurarse de que el objeto termine exactamente en la posición final
-        objTransform.position = endPosition;
+        if (objTransform != null)
+        {
+            objTransform.position = endPosition;
+        }
     }
 
     public void StopSpawning()

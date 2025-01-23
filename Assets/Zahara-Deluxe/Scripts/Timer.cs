@@ -7,14 +7,12 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI countdownText;
     ScoreL1 score;
     public bool isPaused = false;
-    // Start is called before the first frame update
     void Start()
     {
       score = FindObjectOfType<ScoreL1>();
       isPaused = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
       if(isPaused) return; 

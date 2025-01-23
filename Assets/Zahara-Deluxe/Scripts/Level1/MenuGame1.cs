@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class MenuGame1 : MonoBehaviour
 {
     public Timer timer;
-    // Start is called before the first frame update
     void Start()
     {
         gameObject.SetActive(false);
