@@ -271,7 +271,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Return to Lobby
+  m_Text: Volver al Lobby
 --- !u!222 &81708603
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1967,7 +1967,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Score: \n"
+  m_text: "Puntuaje: \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d8283e9a3150704daef5d63dadbed7e, type: 2}
   m_sharedMaterial: {fileID: -7191163622888008962, guid: 5d8283e9a3150704daef5d63dadbed7e, type: 2}
@@ -2082,7 +2082,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Max score: \n"
+  m_text: "Max puntuaje: \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d8283e9a3150704daef5d63dadbed7e, type: 2}
   m_sharedMaterial: {fileID: -7191163622888008962, guid: 5d8283e9a3150704daef5d63dadbed7e, type: 2}
@@ -2327,7 +2327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1183841077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2579,7 +2579,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Restart '
+  m_Text: Reanudar
 --- !u!222 &1269557940
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3874,7 +3874,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Return to Lobby
+  m_Text: Volver al Lobby
 --- !u!222 &1583780782
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4043,7 +4043,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Go to Fridge
+  m_Text: Ir a la nevera
 --- !u!222 &1742900913
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4122,7 +4122,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New magnet achieved!
+  m_Text: Nuevo iman conseguido!
 --- !u!222 &1754497604
 CanvasRenderer:
   m_ObjectHideFlags: 0

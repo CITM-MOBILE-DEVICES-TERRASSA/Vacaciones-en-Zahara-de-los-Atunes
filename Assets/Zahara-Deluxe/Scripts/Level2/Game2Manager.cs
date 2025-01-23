@@ -133,14 +133,14 @@ public class Game2Manager : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (scoreText) scoreText.text = $"Score: {score}";
+        if (scoreText) scoreText.text = $"Puntuaje: {score}";
         if (timerText)
         {
             int minutes = Mathf.FloorToInt(currentTime / 60);
             int seconds = Mathf.FloorToInt(currentTime % 60);
-            timerText.text = $"Time: {minutes:00}:{seconds:00}";
+            timerText.text = $"Tiempo: {minutes:00}:{seconds:00}";
         }
-        if (livesText) livesText.text = $"Lives: {currentLives}";
+        if (livesText) livesText.text = $"Vidas: {currentLives}";
     }
 
     public void ReturnToLobby()
