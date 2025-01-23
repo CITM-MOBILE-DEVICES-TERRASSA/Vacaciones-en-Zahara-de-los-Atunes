@@ -10,6 +10,8 @@ namespace GameCore.Navigation
         public const string PescaitoFrito = "PescaitoFrito";
         public const string Game2 = "Game2";
         public const string JumpingJack = "Meta1";
+        public const string FelixJump = "LevelSelector";
+        public const string Fiki = "LobbyFiki";
 
     }
 }

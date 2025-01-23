@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class Score : MonoBehaviour
+public class ScoreZ : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
 
