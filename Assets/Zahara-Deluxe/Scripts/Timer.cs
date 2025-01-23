@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
       score = FindObjectOfType<ScoreL1>();
+      isPaused = false;
     }
 
     // Update is called once per frame

@@ -26,10 +26,10 @@ public class MenuGame1 : MonoBehaviour
     }
     public void Restart()
     {
-        timer.isPaused = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        gameObject.SetActive(false);
         Time.timeScale = 1;
+        timer.isPaused = false;
+        gameObject.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void Lobby()
     {

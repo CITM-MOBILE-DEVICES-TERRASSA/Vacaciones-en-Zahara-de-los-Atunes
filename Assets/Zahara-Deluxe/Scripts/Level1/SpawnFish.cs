@@ -23,6 +23,7 @@ using UnityEngine;
         private bool carta = false;
         void Start()
         {
+            Time.timeScale = 1;
             Tiempo = GameObject.Find("Overlay").GetComponent<Timer>();
             CartaPescao = GameObject.Find("CartaPescaos");
             Tiempo.isPaused = true;

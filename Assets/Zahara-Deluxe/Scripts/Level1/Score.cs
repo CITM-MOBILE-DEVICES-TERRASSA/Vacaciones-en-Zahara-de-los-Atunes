@@ -7,15 +7,18 @@ public class ScoreL1 : MonoBehaviour
 {
     public int score = 0;
     public int maxScore;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI maxScoreText;
+    private TextMeshProUGUI scoreText;
+    private TextMeshProUGUI maxScoreText;
     public GameObject victoryPanel;
     public GameObject gameOverPanel;
     
     // Start is called before the first frame update
     void Start()
     {
+        //dont destroy on load
         maxScore = PlayerPrefs.GetInt("maxScore", maxScore);
+        scoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
+        maxScoreText = GameObject.Find("MaxScore").GetComponent<TextMeshProUGUI>();
         score = 0;
         victoryPanel.SetActive(false);
         gameOverPanel.SetActive(false);
