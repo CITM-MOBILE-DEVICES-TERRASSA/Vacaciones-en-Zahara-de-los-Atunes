@@ -41,10 +41,9 @@ public class LobbyManager : MonoBehaviour
         coinsText.text = coins.ToString("F3");
     }
 
-
     public void PlayButton()
     {
-        LevelTransitionController.instance.StartTransition(3, 2);
+        LevelTransitionController.instance.StartTransition(21, 2);
     }
 
 }
